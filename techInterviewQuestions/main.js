@@ -95,6 +95,6 @@
 // // Would you like to dive deeper into any specific problem or concept?
 
 
-//add numbers
-const addNumbers = arr => arr.reduce((curr, acc) => acc + curr, 0);
-console.log([1, 2, 3, 4, 5]);
+// addNumbers
+const addNumbers = (arr) => arr.reduce((acc, curr) => acc + curr, 0);
+console.log(addNumbers([1,2,3,4,5]));
