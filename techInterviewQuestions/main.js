@@ -94,7 +94,56 @@
 // // If you want, I can guide you on how to approach solving these problems or suggest resources to help you practice. 
 // // Would you like to dive deeper into any specific problem or concept?
 
+//Exercise: Arrow Functions
 
-// addNumbers
-const addNumbers = (arr) => arr.reduce((acc, curr) => acc + curr, 0);
-console.log(addNumbers([1,2,3,4,5]));
+//Exercise 1: Write an arrow function that returns the string "Hello Jill".
+// const fullName = (name, feel) => `hello ${name} I ${feel} you!`;
+// console.log(fullName("Jill", "Love"));
+//Exercise 2: Write an arrow function that expects an array of integers,
+// and returns the sum of the elements of the array. 
+//Use the built-in method reduce() on the array argument.
+// const addNumbers = arr => arr.reduce((curr, acc) => curr + acc, 0);
+// console.log(addNumbers([3, 234, 7, 23, 76] )); 
+
+//Exercise 3: Run the following code with Node to see the result. 
+//Then refactor any of the capable function(s) with arrow functions.
+//The code should still work 😉
+
+
+
+// const Animal = function(animal, sound, delay) {
+//     this.animal = animal;
+//     this.sound = sound;
+//     this.delay = delay;
+//   }
+  
+//   Animal.prototype.greet = function() {
+//     setTimeout(function() {
+//       console.log(`Hi, I am a ${this.animal}...${this.sound}`);
+//     }.bind(this), this.delay);
+//   };
+  
+//   const dog = new Animal('Dog', 'Bark', 3000);
+//   const cat = new Animal('Cat', 'Meow', 200);
+//   dog.greet();
+//   cat.greet();
+
+class Animal {
+    constructor(animal, sound, delay) {
+        this.animal = animal;
+        this.sound = sound;
+        this.delay = delay;
+    }
+Animal(bear, roar, 400);
+    greet = () => {
+        setTimeout(() => {
+            console.log(`Hi, I am a ${this.animal}...${this.sound}`);
+        }, this.delay);
+    };
+}
+
+const dog = new Animal('Dog', 'Bark', 3000);
+const cat = new Animal('Cat', 'Meow', 200);
+dog.greet();
+cat.greet();
+
