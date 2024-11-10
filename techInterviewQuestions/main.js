@@ -128,22 +128,68 @@
 //   dog.greet();
 //   cat.greet();
 
-class Animal {
-    constructor(animal, sound, delay) {
-        this.animal = animal;
-        this.sound = sound;
-        this.delay = delay;
-    }
-Animal(bear, roar, 400);
-    greet = () => {
-        setTimeout(() => {
-            console.log(`Hi, I am a ${this.animal}...${this.sound}`);
-        }, this.delay);
-    };
-}
+// class Animal {
+//     constructor(animal, sound, delay) {
+//         this.animal = animal;
+//         this.sound = sound;
+//         this.delay = delay;
+//     }
 
-const dog = new Animal('Dog', 'Bark', 3000);
-const cat = new Animal('Cat', 'Meow', 200);
-dog.greet();
-cat.greet();
+//     greet = () => {
+//         setTimeout(() => {
+//             console.log(`Hi, I am a ${this.animal}...${this.sound}`);
+//         }, this.delay);
+//     };
+// }
 
+// const dog = new Animal('Dog', 'Bark', 3000);
+// const cat = new Animal('Cat', 'Meow', 200);
+// dog.greet();
+// cat.greet();
+
+//???????????????????????????
+//Create a function that returns another function. 
+//The inner function should take a number and return that number multiplied by a 
+//factor that was passed to the outer function.
+
+// const multiplier = (factor) => multiplier.reduce((num) => num * factor);
+// console.log(multiplier(12)); ????????????????
+
+//Here's a list of videos. Use a sequence of arrow
+//functions to calculate the total number of seconds for only 
+//those videos that have 'Code' in their titles.
+
+ 
+const playList = [
+  { title: 'Learn to Code', dur: '5:34' },
+  { title: 'Learn to Code', dur: '2:33' },
+  { title: 'Learn to Skate', dur: '15:36' },
+  { title: 'Learn to Code', dur: '8:32' },
+  { title: 'Learn to Skate', dur: '10:17' },
+  { title: 'Learn to Skate', dur: '15:36' },
+  { title: 'Learn to Code', dur: '13:55' },
+];
+
+// const totalSeconds = playList
+//   .filter(video => video.title.includes('Code'))
+//   .map(video => {
+//     const [minutes, seconds] = video.dur.split(':').map(Number);
+//     return minutes * 60 + seconds;
+//   })
+//   .reduce((acc, sec) => acc + sec, 0);
+
+// with implicit returns
+const totalSeconds = playList
+  .filter(({ title }) => title.includes('Code'))
+  .map(({ dur }) => dur.split(':').reduce((min, sec) => min * 60 + +sec))
+  .reduce((acc, sec) => acc + sec, 0);
+
+console.log(totalSeconds);
+
+
+// const totalMinOfCode = playList.filter(videoWithCode => 
+//     videoWithCode.title.includes('code'))
+//     console.log(videoWithCode.length);
+//     .map(videoWithCode => {
+
+//     });
