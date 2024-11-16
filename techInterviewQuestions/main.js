@@ -10,6 +10,7 @@
 // }
 // console.log(squareNumbers([1, 2, 3, 4, 5])); 
 
+
 // // 2. **Functions**:
 // //    - **Problem**: Create a function that returns another function. 
 // //        The inner function should take a number and return that number multiplied by a 
@@ -21,6 +22,11 @@
 // console.log(double(10)); 
 // const quadruple = createMultiplier(4);
 // console.log(quadruple(10)); 
+//or 
+// const multiplier = factor => num => num * factor;
+// const multipliedBy4 = multiplier(4);
+// console.log(multipliedBy4(76));
+
 
 // // 3. **Asynchronous JavaScript**:
 // //    - **Problem**: Write a function that fetches data from a public API (like JSONPlaceholder) and logs the result. 
@@ -160,15 +166,15 @@
 //those videos that have 'Code' in their titles.
 
  
-const playList = [
-  { title: 'Learn to Code', dur: '5:34' },
-  { title: 'Learn to Code', dur: '2:33' },
-  { title: 'Learn to Skate', dur: '15:36' },
-  { title: 'Learn to Code', dur: '8:32' },
-  { title: 'Learn to Skate', dur: '10:17' },
-  { title: 'Learn to Skate', dur: '15:36' },
-  { title: 'Learn to Code', dur: '13:55' },
-];
+// const playList = [
+//   { title: 'Learn to Code', dur: '5:34' },
+//   { title: 'Learn to Code', dur: '2:33' },
+//   { title: 'Learn to Skate', dur: '15:36' },
+//   { title: 'Learn to Code', dur: '8:32' },
+//   { title: 'Learn to Skate', dur: '10:17' },
+//   { title: 'Learn to Skate', dur: '15:36' },
+//   { title: 'Learn to Code', dur: '13:55' },
+// ];
 
 // const totalSeconds = playList
 //   .filter(video => video.title.includes('Code'))
@@ -179,17 +185,15 @@ const playList = [
 //   .reduce((acc, sec) => acc + sec, 0);
 
 // with implicit returns
-const totalSeconds = playList
-  .filter(({ title }) => title.includes('Code'))
-  .map(({ dur }) => dur.split(':').reduce((min, sec) => min * 60 + +sec))
-  .reduce((acc, sec) => acc + sec, 0);
+// const totalSeconds = playList
+//   .filter(({ title }) => title.includes('Code'))
+//   .map(({ dur }) => dur.split(':').reduce((min, sec) => min * 60 + +sec))
+//   .reduce((acc, sec) => acc + sec, 0);
 
-console.log(totalSeconds);
+// console.log(totalSeconds);
 
 
-// const totalMinOfCode = playList.filter(videoWithCode => 
-//     videoWithCode.title.includes('code'))
-//     console.log(videoWithCode.length);
-//     .map(videoWithCode => {
+const name = 'Justin';
+const beingCool = false;
+console.log(`${name} is ${beingCool ? "Acting normal" : "Being a jerk"}`);
 
-//     });
