@@ -184,7 +184,9 @@ function solve(a, b) {
 
 
 // Count the number of Duplicates
-// Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+// Write a function that will return the count of distinct case-insensitive alphabetic 
+// characters and numeric digits that occur more than once in the input string. 
+// The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
 
 // Example
 // "abcde" -> 0 # no characters repeats more than once
@@ -194,3 +196,111 @@ function solve(a, b) {
 // "Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
 // "aA11" -> 2 # 'a' and '1'
 // "ABBA" -> 2 # 'A' and 'B' each occur twice
+
+// function numOfDup(str) {
+//     const lowerCaseStr = str.toLowerCase()
+//     const charMap = {}
+//     for (let char of lowerCaseStr) {
+//     charMap[char] = (charMap[char] || 0)+ 1
+//     }
+//     let countResult = 0
+//     for (let count of Object.values(charMap)) {
+//         if (count > 1) {
+//             countResult++
+//         }
+//     }
+
+    
+
+//     return countResult
+
+//     }
+// console.log(numOfDup('indivisibility'))
+// console.log(numOfDup('Indivisibilities'))
+// console.log(numOfDup('aA11'))
+// console.log(numOfDup('ABBA'))
+// console.log(Object.values(charMap))
+// function duplicateCount(text){
+//     const lowerCaseText = text.toLowerCase()
+//     const charMap = {}
+//     for (let char of lowerCaseText) {
+//       charMap[char] = (charMap[char] || 0) + 1
+//     }
+//       let returnCount = 0
+//       for (let count of Object.values(charMap)) {
+//         if (count > 1) {
+//           returnCount++
+//         }
+//       } return returnCount 
+//     }
+//     console.log(duplicateCount('indivisibility'))
+// const findApplicants = (list) => {
+//     for (let applicant of list) {
+//       if (applicant[0] >= 55 && applicant[1] > 7) {
+//         console.log('Senior')
+//       } else {
+//         console.log('Open')
+//       }
+//     }
+// } 
+
+// const findApplicants = (list) => {
+//     let listOfStrings = []
+//     for (let applicant of list) {
+//         if (applicant[0] >= 55 && applicant[1] > 7) {
+//         listOfStrings.push('Senior')
+//       } else {
+//         listOfStrings.push('Open')
+//       } 
+//     } 
+//     return listOfStrings
+// } 
+    
+// findApplicants([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]])
+    // list[0][1]
+
+// console.log(findApplicants([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]))
+
+// const openOrSenior = data => data.map(([age, handicap]) => (age >= 55 && handicap > 7 ? 'Senior' : 'Open'))
+// console.log(openOrSenior([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]))
+
+// const indexOfAllOccurrences = (arr, n) => {
+//     let result = []
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === n) {
+//             result.push(i)
+//         }
+//     } return result
+// }
+
+// // const indexOfAllOccurrences = (arr, n) => arr.indexOf(n)
+
+
+// // indexOfAllOccurrences([6, 9, 3, 4, 3, 82, 11], 3)
+// console.log(indexOfAllOccurrences([6, 9, 3, 4, 3, 82, 11], 3))
+
+// function countPositivesSumNegatives(input) {
+//     let pos = 0
+//     let neg = 0
+//     if (input[0] === 0) {
+//         return []
+//     }
+//     for (i = 0; i < input.length; i++) {
+//       if (input[i] > 0) {
+//         pos++
+//       } else if (input[i] < 0) {
+//         neg += input[i]
+//       }
+//     } 
+//     return [pos, neg]
+//     }
+
+
+//  countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
+// console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
+
+function countPositivesSumNegatives(input) {
+    return input && input.length ? [input.filter(p => p > 0).length, input.filter(n => n < 0).reduce((a, b) => a + b, 0)] : [];
+}
+
+console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
