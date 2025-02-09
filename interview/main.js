@@ -4,13 +4,34 @@
 // // Write a function that returns the count of characters that have to be removed in order to get a string with no consecutive repeats.
 // // Note: This includes any character
 // // Example
-// // 'abbbbc'  => 'abc'    #  answer: 
+// // 'abbbbc'  => 'abc'    #  answer: 3
 // // 'abbcca'  => 'abca'   #  answer: 2
 // // 'ab cca'  => 'ab ca'  #  answer: 1
 
-// // find duplicate
-// // remove extras
-// // return without duplicates
+// const countRemovedLetters = str => {
+//     let count = 0
+//     for (i = 0; i < str.length; i++) {
+//       if (str[i] === str[i - 1]) {
+//         count++
+//       }
+//     }
+//     return count
+// }
+
+// console.log(countRemovedLetters('abbbbc'))
+// console.log(countRemovedLetters('abbcca'))
+// console.log(countRemovedLetters('ab cca'))
+
+
+
+
+
+
+
+
+
+
+
 
 // // const removeConsecRepeats = str => str.split('')
  
@@ -149,17 +170,17 @@
 // }
 // solve(a, b)
 
-function solve(a, b) {
-   return b.map(target => {
-    let count = 0;
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] === target) {
-            count++
-        }
-    }
-    return count;
-   })
-}
+// function solve(a, b) {
+//    return b.map(target => {
+//     let count = 0;
+//     for (let i = 0; i < a.length; i++) {
+//         if (a[i] === target) {
+//             count++
+//         }
+//     }
+//     return count;
+//    })
+// }
 
 // function solve(a, b) {
 //     let numOfTimes = 0;
@@ -299,8 +320,140 @@ function solve(a, b) {
 //  countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
 // console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
 
-function countPositivesSumNegatives(input) {
-    return input && input.length ? [input.filter(p => p > 0).length, input.filter(n => n < 0).reduce((a, b) => a + b, 0)] : [];
-}
+// function countPositivesSumNegatives(input) {
+//     return input && input.length ? [input.filter(p => p > 0).length, input.filter(n => n < 0).reduce((a, b) => a + b, 0)] : [];
+// }
 
-console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
+// console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]))
+
+
+
+
+// ["AS", "3S", "9S", "KS", "4S"]  ==> true
+
+// ["AD", "4S", "7H", "KS", "10S"] ==> false
+
+// const isFlush = cards => {
+//     const suit = cards[0][1]
+//     return cards.every(card => card[1] === suit)
+//    }
+// console.log(isFlush(["AS", "3S", "9S", "KS", "4S"] ))
+// console.log(isFlush(["AD", "4S", "7H", "KS", "10S"] ))
+
+
+
+
+// Description:
+// Write a function that takes two array arguments, and returns a new array populated with the elements that appear in either array, but not in both. Elements should only appear once in the returned array.
+
+// The order of the elements in the result should follow what appears in the first array, then the second one.
+
+// Examples
+// [1, 2, 3, 3], [3, 2, 1, 4, 5] --> [4, 5]
+
+// ["tartar", "blanket", "cinnamon"], ["cinnamon", "blanket", "domino"] --> ["tartar", "domino"]
+
+// [77, "ciao"], [78, 42, "ciao"] --> [77, 78, 42]
+
+// [1, 2, 3, 3], [3, 2, 1, 4, 5, 4] --> [4,5]
+
+// [1, 2, 3] , [3, 3, 2, 1] --> []
+
+// const hotSingles = (arr1, arr2) => {
+//     const resultArr = []
+//     for (let item of arr1) {
+//         if (!arr2.includes(item) && !resultArr.includes(item)) {
+//             resultArr.push(item)
+//         }
+//     }
+//     for (let item of arr2) {
+//         if (!arr1.includes(item) && !resultArr.includes(item)) {
+//             resultArr.push(item)
+//         }
+//     }
+//     return resultArr
+// }
+// console.log(hotSingles([1, 2, 3, 3], [3, 2, 1, 4, 5]))
+// console.log(hotSingles(["tartar", "blanket", "cinnamon"], ["cinnamon", "blanket", "domino"]))
+
+
+// Given a text, for example:
+
+// const inputText = "Michael, how are you? - Cool, how is John Williamns and Michael Jordan? I don't know but Michael Johnson is fine. Michael do you still score points with LeBron James, Michael Green AKA Star and Michael Wood?";
+
+// get an array of last names of people named Michael. The result should be:
+// ["Jordan", "Johnson", "Green", "Wood"]
+
+// Notes:
+
+// First name will always be Michael with upper case 'M'.
+// There will always be a space character between 'Michael' and last name.
+// Last name will always be one word, starting with an upper-case letter and continuing with lower-case letters.
+// There will always be at least one 'Micheal' with a valid last name in the input text.
+
+// const getMichaelsLastName = str => {
+//        const resultArr = []
+//        let splitStr = str.split(/\s+/)
+       
+//        for (let i = 0; i < splitStr.length; i++) {
+//         if (splitStr.replace(/[^a-zA-Z]/g, '') === 'Michael') {
+//             resultArr.push(splitStr[i + 1].replace(/[^a-zA-Z]/g, ''))
+//         }
+//        }
+//        console.log(cleanSplitString)
+//        console.log(splitStr)
+//        return resultArr
+// }
+// console.log(getMichaelsLastName(inputText))
+
+// const getMichaelsLastName = str => {
+//     const resultArr = [];
+//     const words = str.split(" "); // Split string into words
+
+//     const cleanWord = word => {
+//         let cleaned = "";
+//         for (let char of word) {
+//             if ((char >= "A" && char <= "Z") || (char >= "a" && char <= "z")) {
+//                 cleaned += char; // Keep only letters
+//             }
+//         }
+//         return cleaned;
+//     };
+
+//     for (let i = 0; i < words.length; i++) {
+//         if (words[i] === "Michael") { // Find "Michael"
+//             let lastName = words[i + 1] || ""; // Get next word
+//             lastName = cleanWord(lastName); // Remove punctuation manually
+
+//             // Validate last name (starts with uppercase, rest lowercase)
+//             if (lastName.length > 0 && lastName[0] >= "A" && lastName[0] <= "Z") {
+//                 let isValid = true;
+//                 for (let j = 1; j < lastName.length; j++) {
+//                     if (!(lastName[j] >= "a" && lastName[j] <= "z")) {
+//                         isValid = false;
+//                         break;
+//                     }
+//                 }
+//                 if (isValid) resultArr.push(lastName);
+//             }
+//         }
+//     }
+
+//     return resultArr;
+// };
+
+// const inputText = "Michael, how are you? - Cool, how is John Williamns and Michael Jordan? I don't know but Michael Johnson is fine. Michael do you still score points with LeBron James, Michael Green AKA Star and Michael Wood?";
+
+// console.log(getMichaelsLastName(inputText)); 
+// // Output: ["Jordan", "Johnson", "Green", "Wood"]
+
+
+// const getMichaelsLastName = str => {
+//     return (str.match(/Michael ([A-Z][a-z]+)/g) || []).map(match => match.split(" ")[1]);
+// };
+
+// const inputText = "Michael, how are you? - Cool, how is John Williamns and Michael Jordan? I don't know but Michael Johnson is fine. Michael do you still score points with LeBron James, Michael Green AKA Star and Michael Wood?";
+
+// console.log(getMichaelsLastName(inputText));
+// // Output: ["Jordan", "Johnson", "Green", "Wood"]
+
