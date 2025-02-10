@@ -334,8 +334,7 @@
 // ["AD", "4S", "7H", "KS", "10S"] ==> false
 
 // const isFlush = cards => {
-//     const suit = cards[0][1]
-//     return cards.every(card => card[1] === suit)
+//     return cards.every(card => card[1] === cards[0].slice(- 1))
 //    }
 // console.log(isFlush(["AS", "3S", "9S", "KS", "4S"] ))
 // console.log(isFlush(["AD", "4S", "7H", "KS", "10S"] ))
@@ -472,3 +471,173 @@
 //     return parseInt(inputString.match(/[0-9]/g)) 
 //     }
 //     console.log(getAge("5 years old"))
+
+
+
+////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\
+
+// Remove exclamation marks !!!
+
+
+// function removeExclamationMarks(s) {
+//     return s.replace(/['!']/g, '')
+//   }
+//   console.log(removeExclamationMarks('Somewhere! in! time!!!!'))
+
+
+
+
+
+
+
+
+// Nathan loves cycling.
+
+// Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
+
+// You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+
+// For example:
+
+// time = 3 ----> litres = 1
+
+// time = 6.7---> litres = 3
+
+// time = 11.8--> litres = 5
+
+
+// const litres = hrs => {
+//     const litresPerHr = 0.5
+//     return Math.floor(litresPerHr * hrs)
+// }
+// console.log(litres(11.8))
+
+
+
+
+
+
+
+
+// Description:
+// Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+// For example:
+
+// uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+// uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+// uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+
+// const uniqueInOrder = str => {
+//     const resultArr = []
+//     const splitArr = [...str]
+//     for (i = 0; i < splitArr.length; i++) {
+//         if (str[i] !== str[i+1]) {
+//             resultArr.push(str[i])
+//         }
+//     }
+//     return resultArr
+
+// }
+
+// const uniqueInOrder = str => {
+//     const resultArr = []
+//     const strArr = str.split('')
+    
+//     for (i = 0; i < strArr.length; i++) {
+//       if (str[i] !== str[+1]) {
+//         resultArr.push(str[i])
+//       }
+//      }
+//       return resultArr
+//     }
+// console.log(uniqueInOrder('AAAABBBCCDAABBB'))
+
+
+
+
+
+
+
+
+
+// Description:
+// Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
+
+// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
+
+// [10, 343445353, 3453445, 3453545353453] should return 3453455.
+
+// ArraysFundamentals
+
+
+// const sumToLowest = arr => {
+//     const reorderedArr = arr.sort((a, b) => a - b)
+//     return reorderedArr[0] + reorderedArr[1] 
+// }
+// console.log(sumToLowest([10, 343445353, 3453445, 3453545353453]))
+
+
+
+
+
+
+
+
+
+
+
+// function firstNonConsecutive (arr) {
+//     for (let i = 1; i < arr.length; i++) {
+//      if (arr[i] !== arr[i-1] + 1) {
+//         return arr[i]
+//     } 
+//   }
+//   return 'All Consecutive'
+// }
+// console.log(firstNonConsecutive([1,2,3,4,6,7,8]))  // => 6
+// console.log(firstNonConsecutive([1, 2, 3, 4, 5, 6, 7, 8]))  // => 6
+
+
+
+
+
+// const findCentury = year => {
+//     const yearToString = year.toString()
+//     const firstTwoDig = yearToString.slice(0, -2)
+//     const lastTwoDig = yearToString.slice(-2)
+//     // console.log(firstTwoDig)
+//     // console.log(lastTwoDig)
+//     return lastTwoDig !== '00' ? Number(firstTwoDig) + 1 : Number(firstTwoDig)
+// }
+
+// const century = year => Math.ceil(year / 100);
+
+
+//   console.log(century(1979))
+
+
+
+// Description:
+// Task
+// Create a function that accepts a string as an argument and validates whether the vowels (a, e, i, o, u) and consonants are in alternate order.
+
+// Examples
+// "amazon" --> true
+// "apple" --> false
+// "banana" --> true
+// Note
+// Arguments consist of only lowercase letters.
+// AlgorithmsStrings
+
+
+
+const areWeAlternates = str => {
+    const vowels = 'aeiou'
+    for (let i = 0; i < vowels.length; i++) {
+if (vowels.includes(str[0])) {
+    retur
+}
+    }
+}
+console.log(areWeAlternates("amazon"))
