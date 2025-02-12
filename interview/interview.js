@@ -202,17 +202,45 @@ const messages = [
     },
   
   ];
+
+
+// 1. Count the total number of messages
+
+// 2. Identify the user (phone number) who sent the most messages
+
+// 3. Group messages by date (ignoring time)
+
+// 4. Calculate the average message length (in characters)
   
    const messageAnalysis = messages => {
-    //1
+    // 1. Count the total number of messages
     const messagesLength = messages.length
-    //2
+    // 2. Identify the user (phone number) who sent the most messages
+   const senderCount = {}
+    for (let {sender} of messages) {
+      senderCount[sender] = (senderCount[sender] || 0) + 1
+    }
+    const mostFrequentSender = Object.keys(senderCount).reduce((a, b) => senderCount[a] > senderCount[b] ? a : b)  
+    // 3. Group messages by date (ignoring time)
+    const messagesByDate = {}
+    for (let {timestamp, text} of messages) {
+      const date = timestamp.slice(0, 10)
+      if (!messagesByDate[date]) {
+        messagesByDate[date] = []
+      }
+    messagesByDate[date].push(text)
+    } 
+  // 4. Calculate the average message length (in characters)
+  const totalCharacters = messages.reduce((sum, { text }) => sum + text.length, 0);
     
+  const avgMessLength =  Math.round(totalCharacters / messagesLength)
+   
+      return  {messagesLength, mostFrequentSender, messagesByDate, avgMessLength}
 
    }
   
   console.log(messageAnalysis(messages));
-
+    
 
 
 
