@@ -632,12 +632,110 @@
 
 
 
-const areWeAlternates = str => {
-    const vowels = 'aeiou'
-    for (let i = 0; i < vowels.length; i++) {
-if (vowels.includes(str[0])) {
-    retur
-}
+// const areWeAlternates = str => {
+//     const vowels = 'aeiou'
+//     for (let i = 0; i < vowels.length; i++) {
+// if (vowels.includes(str[0])) {
+//     return 
+// }
+//     }
+// }
+// console.log(areWeAlternates("amazon"))
+
+
+
+// const moveZeroes = numbers => {
+//     let nonZeroPlacementIndex = 0;
+    
+//     for (let i = 0; i < numbers.length; i++) {
+//         let currentNonZeroValue = numbers[i]
+//         if (numbers[i] !== 0) {
+//             numbers[i] = numbers[nonZeroPlacementIndex]
+//             numbers[nonZeroPlacementIndex] = currentNonZeroValue
+//             nonZeroPlacementIndex++
+//         }
+        
+//         }
+//     }
+
+
+// let numbers = [0,1,0,3,12];//[1,3,12,0,0]
+// moveZeroes(numbers);
+// console.log(numbers); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Given a string s, return true if the string 
+// can be a palindrome after 
+// deleting at most one character from it.
+
+const validPalindrome = (s) => {
+    let left = 0, right = s.length - 1;
+    
+    while (left < right) {
+        if (s[left] !== s[right]) {
+            let l = left + 1, r = right;
+            while (l < r && s[l] === s[r]) l++, r--;
+            if (l >= r) return true; // Removing left character worked
+            
+            l = left, r = right - 1;
+            while (l < r && s[l] === s[r]) l++, r--;
+            return l >= r; // Removing right character worked
+        }
+        left++;
+        right--;
     }
-}
-console.log(areWeAlternates("amazon"))
+    
+    return true;
+};
+console.log(validPalindrome('ottlo'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const moveZeroes = numbers => {
+//     let nonZeroIndex = 0;
+
+//     for (let i = 0; i < numbers.length; i++) {
+//         if (nums[i] !== 0) {
+//             // Swap nums[i] with nums[nonZeroIndex] using a temp variable
+//             let temp = nums[i];
+//             nums[i] = nums[nonZeroIndex];
+//             nums[nonZeroIndex] = temp;
+            
+//             // Move the nonZeroIndex forward
+//             nonZeroIndex++;
+//         }
+//     }
+// };
+
+// let nums = [0, 1, 0, 3, 12];
+// moveZeroes(nums);
+// console.log(nums); // Output: [1, 3, 12, 0, 0]
+
