@@ -211,16 +211,33 @@ const messages = [
 // 3. Group messages by date (ignoring time)
 
 // 4. Calculate the average message length (in characters)
+
+// Here are four more problems you can solve using the messages array:
+
+// 5. Find the most active recipient
+// Identify which phone number received the most messages.
+
+// 6. Find the longest message
+// Determine which message has the most characters and return its details.
+
+// 7. Find conversations between two users
+// Given two phone numbers, return all messages exchanged between them.
+
+// 8. Get the latest message for each sender
+// Find the most recent message sent by each unique sender.
   
    const messageAnalysis = messages => {
+    
     // 1. Count the total number of messages
     const messagesLength = messages.length
+    
     // 2. Identify the user (phone number) who sent the most messages
    const senderCount = {}
     for (let {sender} of messages) {
       senderCount[sender] = (senderCount[sender] || 0) + 1
     }
     const mostFrequentSender = Object.keys(senderCount).reduce((a, b) => senderCount[a] > senderCount[b] ? a : b)  
+    
     // 3. Group messages by date (ignoring time)
     const messagesByDate = {}
     for (let {timestamp, text} of messages) {
@@ -230,12 +247,37 @@ const messages = [
       }
     messagesByDate[date].push(text)
     } 
-  // 4. Calculate the average message length (in characters)
+  
+    // 4. Calculate the average message length (in characters)
   const totalCharacters = messages.reduce((sum, { text }) => sum + text.length, 0);
-    
   const avgMessLength =  Math.round(totalCharacters / messagesLength)
-   
-      return  {messagesLength, mostFrequentSender, messagesByDate, avgMessLength}
+  
+    // 5. Find the most active recipient 
+    // Identify which phone number received the most messages.
+  const receiverCount = {} 
+  for (let {recipient} of messages) {
+    receiverCount[recipient] = (receiverCount[recipient] || 0) + 1
+    
+  }
+  const mostActiveRecipient = Object.values(receiverCount)
+  
+    // Extra: If it's a tie return an Array of all of the Most active numbers
+
+  // 6. Find the longest message
+  // Determine which message has the most characters and return its details.
+  const longestMessage = messages.reduce((sum, {text}) => sum + text)
+
+
+  return{
+        // messagesLength, 
+        // mostFrequentSender, 
+        // messagesByDate, 
+        // avgMessLength,
+        // mostActiveRecipient,
+        // avgMessLength,
+        totalCharacters,
+        mostActiveRecipient
+      }
 
    }
   
