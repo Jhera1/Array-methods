@@ -63,16 +63,42 @@ const earliestEvent = ancientRecords.sort((a, b) => a.year - b.year)[0]
 // Group events by location
 // Create an object where each key is a location and the value is an array of events that took place there.
 const eventsObject = {}
+for (let i = 0; i < ancientRecords.length; i++) {
+   let location = ancientRecords[i].location
+   if (!eventsObject[location])
+    eventsObject[location] = []
+   
+   
+   eventsObject[location].push(`In the year ${ancientRecords[i].year}, ${ancientRecords[i].entity} ${ancientRecords[i].action}`)
+}
 
-return eventsObject
+// for (let location in eventsObject) {
+//     eventsObject[location] = eventsObject[location].join('')
+// }
+
 
 
 // Find all events related to a specific entity
 // Given an entity's name (e.g., "Enki"), return all their recorded actions.
-
+const entitiesActions = {}
+for (let i = 0; i < ancientRecords.length; i++) {
+    let entity = ancientRecords[i].entity
+    if (!entitiesActions[entity]) {
+      entitiesActions[entity] = []
+      entitiesActions[entity].push(ancientRecords[i].action)
+    }
+}
 
 // Sort events chronologically
 // Arrange the records from the oldest to the most recent event.
+const oldestToRecent = ancientRecords.sort((a, b) => a.year - b.year)
+
+return {
+    earliestEvent,
+    eventsObject,
+    entitiesActions,
+    oldestToRecent
+}
 
 }
 console.log(dataAnalyzer(ancientRecords))
