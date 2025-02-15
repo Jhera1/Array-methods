@@ -14,13 +14,13 @@ const mysteryData = [
 // 11 Practice Problems:
 
 const dataAnalyzer = mysteryData => {
-// Find the Oldest Mystery School
-// Identify the school that was founded the earliest in history.
+// 1.Find the Oldest Mystery School
+   // Identify the school that was founded the earliest in history.
 const oldestMysterySchool = mysteryData.sort((a, b) => a.yearFounded - b.yearFounded)[0]
 
 
-// Group Schools by Alien Race
-// Create an object where the keys are alien races and the values are arrays of mystery schools associated with each race.
+// 2.Group Schools by Alien Race
+//   Create an object where the keys are alien races and the values are arrays of mystery schools associated with each race.
 
 const racesAndTheirSchools = {}
 for (let entry of mysteryData) {
@@ -30,8 +30,8 @@ if (!racesAndTheirSchools[entry.associatedRace]) {
 racesAndTheirSchools[entry.associatedRace].push(entry.teachings)
 }
 
-// Find Schools That Teach a Specific Topic
-// Write a function that takes a keyword (e.g., "Alchemy") and returns all schools that include it in their teachings.
+// 3.Find Schools That Teach a Specific Topic
+//   Write a function that takes a keyword (e.g., "Alchemy") and returns all schools that include it in their teachings.
 
 // All subjects
 // [ 'Crystal Technology', 'Sound Healing', 'Akashic Records' ],
@@ -60,12 +60,12 @@ let keyWord = 'Crystal Technology'
     // }
    }
 
-// Sort Schools by Founding Year (Oldest to Newest)
-// Use .sort() to order the schools from the most ancient to the most recent.
+// 4. Sort Schools by Founding Year (Oldest to Newest)
+//   Use .sort() to order the schools from the most ancient to the most recent.
 const oldestToRecent = mysteryData.sort((a, b) => a.yearFounded - b.yearFounded)
 
-// Find the Most Common Teaching Across All Schools
-// Count which teaching appears the most times across all mystery schools.
+// 5. Find the Most Common Teaching Across All Schools
+//   Count which teaching appears the most times across all mystery schools.
 
 const teachingCount = {}
 for (let {teachings} of mysteryData) {
@@ -77,18 +77,18 @@ teachingCount[teaching] = (teachingCount[teaching] || 0) +1
     
 //   return JSON.stringify(teachingCount, null, 2)
 
-// Create a Summary Sentence for Each School
-// Convert each school’s data into a readable string like:
-// "The Hermetic Order, founded in Ancient Egypt around -3000, was led by Hermes Trismegistus and focused on Alchemy, Astrology, and Theurgy."
+// 6. Create a Summary Sentence for Each School
+//   Convert each school’s data into a readable string like:
+//   "The Hermetic Order, founded in Ancient Egypt around -3000, was led by Hermes Trismegistus and focused on Alchemy, Astrology, and Theurgy."
 
-// name, origin, teachings, Key figure, year founded, associated race
 const allSchoolSummary = []
 for (let entry of mysteryData) {
         allSchoolSummary.push(`${entry.name}, founded in ${entry.origin} around ${entry.yearFounded}, was led by ${entry.keyFigure} and focused on ${entry.teachings}.`)
     }
+// return allSchoolSummary
 
-// Filter Schools That Originated Before -2000
-// Find all mystery schools that existed before -2000.
+// 7. Filter Schools That Originated Before -2000
+//   Find all mystery schools that existed before -2000.
 const mysterySchoolsBefore2000Bc = []
 for (let entry of mysteryData) {
     if (entry.yearFounded < -2000) {
@@ -97,25 +97,41 @@ for (let entry of mysteryData) {
 }
 // return [mysterySchoolsBefore2000Bc[0], oldestToRecent[0]] 
 
-// Find Schools with the Longest List of Teachings
-// Determine which mystery school has the most teachings listed.
+// 8.Find Schools with the Longest List of Teachings
+//   Determine which mystery school has the most teachings listed.
 const schoolWithMostTeachings = mysteryData.sort((a, b) => b.teachings.length - a.teachings.length)[0]
 
 
-// Find All Schools from a Given Civilization (e.g., Ancient Greece)
+// 9.Find All Schools from a Given Civilization (e.g., Ancient Greece)
+//   const 
 // Return a list of schools that originated in a given civilization.
 
-const teachingsOfGivenCivilization = civilization => {
-    for (let entry of mysteryData) {
+const teachingsOfGivenCivilization = []
+const civilization = "Persia"
+for (let entry of mysteryData) {
     if (entry.origin === civilization) {
-
+        teachingsOfGivenCivilization.push(entry.teachings)
+        
+        // 9.5. practice in returning a sentence with data
+        // teachingsOfGivenCivilization.push(`${civilization} excels in the arts of ${entry.teachings[0]}, ${entry.teachings[1]} and ${entry.teachings[2]}`)
     }
 }
-}
+// return teachingsOfGivenCivilization.flat(1)
 
-return teachingsOfGivenCivilization
-// Match Schools with Their Key Figures
-// Create an object where the keys are the names of key figures, and the values are the mystery schools they were associated with.
+// 10.Match Schools with Their Key Figures
+//   Create an object where the keys are the names of key figures, and the values are the mystery schools they were associated with.
+const schoolsKeyFigures = {}
+for (let entry of mysteryData) {
+    if (!schoolsKeyFigures[entry]) {
+        schoolsKeyFigures[entry.keyFigure] = []
+        schoolsKeyFigures[entry.keyFigure].push(entry.name)
+    }
+}
+let cleanedListOfSchoolsKeyFigures = JSON.stringify(schoolsKeyFigures, null, 2)
+return cleanedListOfSchoolsKeyFigures
+
+
+
 
 }
 console.log(dataAnalyzer(mysteryData))
