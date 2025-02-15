@@ -10,6 +10,7 @@ const mysteryData = [
     { name: "Orphic Mysteries", origin: "Ancient Greece", teachings: ["Reincarnation", "Music as Magic", "Underworld Journeys"], keyFigure: "Orpheus", yearFounded: -600, associatedRace: "Lyrans" },
     { name: "Atlantean Priesthood", origin: "Atlantis", teachings: ["Crystal Technology", "Sound Healing", "Akashic Records"], keyFigure: "Thoth", yearFounded: -11000, associatedRace: "Atlanteans" }
 ];
+// name, origin, teachings, Key figure, year founded, associated race
 // 11 Practice Problems:
 
 const dataAnalyzer = mysteryData => {
@@ -73,22 +74,46 @@ teachingCount[teaching] = (teachingCount[teaching] || 0) +1
   }
 }
    const mostCommonTeaching = Object.entries(teachingCount).reduce((a, b) => (a[1] > b[1] ? a : b))[0]
-   return mostCommonTeaching 
+    
 //   return JSON.stringify(teachingCount, null, 2)
 
 // Create a Summary Sentence for Each School
 // Convert each school’s data into a readable string like:
 // "The Hermetic Order, founded in Ancient Egypt around -3000, was led by Hermes Trismegistus and focused on Alchemy, Astrology, and Theurgy."
-const schoolSummary 
+
+// name, origin, teachings, Key figure, year founded, associated race
+const allSchoolSummary = []
+for (let entry of mysteryData) {
+        allSchoolSummary.push(`${entry.name}, founded in ${entry.origin} around ${entry.yearFounded}, was led by ${entry.keyFigure} and focused on ${entry.teachings}.`)
+    }
+
 // Filter Schools That Originated Before -2000
 // Find all mystery schools that existed before -2000.
+const mysterySchoolsBefore2000Bc = []
+for (let entry of mysteryData) {
+    if (entry.yearFounded < -2000) {
+        mysterySchoolsBefore2000Bc.push(entry.name)
+    }
+}
+// return [mysterySchoolsBefore2000Bc[0], oldestToRecent[0]] 
 
 // Find Schools with the Longest List of Teachings
 // Determine which mystery school has the most teachings listed.
+const schoolWithMostTeachings = mysteryData.sort((a, b) => b.teachings.length - a.teachings.length)[0]
+
 
 // Find All Schools from a Given Civilization (e.g., Ancient Greece)
 // Return a list of schools that originated in a given civilization.
 
+const teachingsOfGivenCivilization = civilization => {
+    for (let entry of mysteryData) {
+    if (entry.origin === civilization) {
+
+    }
+}
+}
+
+return teachingsOfGivenCivilization
 // Match Schools with Their Key Figures
 // Create an object where the keys are the names of key figures, and the values are the mystery schools they were associated with.
 
