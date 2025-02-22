@@ -238,7 +238,8 @@ export const mostRecentUfoData = [
       "Reported": "02/12/2025",
       "Media": "",
       "Explanation": ""
-    }
+    },
+    
     
   ]
   

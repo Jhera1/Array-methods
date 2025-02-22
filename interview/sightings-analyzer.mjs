@@ -1,9 +1,45 @@
 import { mostRecentUfoData } from './ufo-data.mjs'
 
-// Beginner Friendly
+// 🔹🔹🔹🔹Beginner Friendly🔹🔹🔹🔹
+
 // Basic Object and Array Manipulation Questions
 
+
 const ufoDataAnalyzer = mostRecentUfoData => {
+
+// 🔹🔹🔹🔹 Tech Interview Questions 🔹🔹🔹🔹
+    // 1. Count the total number of sightings
+const TotNumOfSightings = mostRecentUfoData.length
+// return TotNumOfSightings
+
+// 2. Identify the shape that appears the most amount of times
+const countOfShapes = {}
+for (let sighting of mostRecentUfoData) {
+    const shape = sighting.Shape
+    countOfShapes[shape] = (countOfShapes[shape] || 0) + 1
+}
+const mostCommonShape = Object.keys(countOfShapes).reduce((a, b) => countOfShapes[a] > countOfShapes[b] ? a : b)
+// return mostCommonShape
+
+// 3. Group sightings by date Occurred (ignoring time)
+ const sightingsGroupedByDate = {}
+ for (let sighting of mostRecentUfoData) {
+    const date = sighting.Occurred.slice(0)
+    if (!sightingsGroupedByDate[date]) {
+        sightingsGroupedByDate[date] = []
+    }
+    sightingsGroupedByDate[date].push()
+ }
+
+// 4. Calculate the average Summary length (in characters)
+const totalLength = mostRecentUfoData.reduce((sum, sighting) => sum + (sighting.Summary ? sighting.Summary.length : 0), 0);
+const count = mostRecentUfoData.filter(sighting => sighting.Summary).length;
+const averageSummaryLength = totalLength / count
+return Math.ceil(averageSummaryLength)
+;
+
+
+
 // 🔹 1.Create an Array of UFO Sightings
 // Given an array of UFO sighting objects, how would you access the city of the first sighting?
 const mostRecentSighting = `The most recent sighting we have is ${mostRecentUfoData[0].City} in ${mostRecentUfoData[0].Country}`
@@ -29,16 +65,16 @@ for (let sighting of mostRecentUfoData) {
 // 🔹 4.Sorting UFO Sightings by Date
 // Write a function that sorts an array of UFO sightings by the occurred date in ascending order.
 
-// Array of Dates
+// 🔹🔹🔹🔹Array of Dates🔹🔹🔹🔹
 let date = mostRecentUfoData.map(sighting => sighting.Occurred)
-
-// .sort method
-const sightingsByDate = mostRecentUfoData.sort((a, b) => new Date(a.Occurred) - new Date(b.Occurred))
-// return sightingsByDate
+// return date
+// 🔹🔹🔹🔹.sort method🔹🔹🔹🔹
+const allSightingsByDate = mostRecentUfoData.sort((a, b) => new Date(a.Occurred) - new Date(b.Occurred))
+// return allSightingsByDate
 
 // 🔹 5.Finding the Most Recent UFO Sighting
 // Given an array of UFO sighting objects, find the sighting with the most recent occurred date.
-const earliestSighting = sightingsByDate[sightingsByDate.length - 1]
+const earliestSighting = allSightingsByDate[allSightingsByDate.length - 1]
 // return earliestSighting
 
 // 🔹 6.Extracting Unique Shapes from UFO Sightings
@@ -74,7 +110,9 @@ const hasMediaReported = mostRecentUfoData.some(sighting => sighting.Media === '
 const sightingsWithSummary = mostRecentUfoData.filter(sighting => sighting.Summary && sighting.Summary.trim() !== "")
 // return sightingsWithSummary
 
-///////////////slightly more difficult\\\\\\\\\\\\\\\\\\\\\\\\\
+
+//🔹🔹🔹🔹slightly more difficult🔹🔹🔹🔹
+
 
 // 🔹 1. Find the Most Common UFO Shape
 // Write a function that finds the most frequently reported UFO shape in the dataset. If multiple shapes have the same highest count, return an array of them.
@@ -87,20 +125,36 @@ for (let sighting of mostRecentUfoData) {
     frequencyOfShape[shape]++
 }
 let mostFrequentShapeCount = Math.max(...Object.values(frequencyOfShape))
-let mostFrequentShape = Object.keys(frequencyOfShape).filter(shape => frequencyOfShape[shape] === mostFrequentShapeCount).toString()
-return mostFrequentShape
+let mostFrequentShape = Object.keys(frequencyOfShape).filter(shape => frequencyOfShape[shape] === mostFrequentShapeCount)
+// return mostFrequentShape
+
+
 // 🔹 2. Sort Sightings by the Most Recent "Occurred" Date
 // Modify your sorting function so that sightings are sorted in descending order (latest first) based on the "Occurred" date.
-// const sightingsDescendingOrder = sightingsByDate.reverse()
+const sightingsDescendingOrder = allSightingsByDate.reverse()
 // return sightingsDescendingOrder
+
 
 // 🔹 3. Find the City with the Most Sightings
 // Write a function that returns the city with the highest number of sightings. If multiple cities have the same count, return an array of them.
-// const sightingsPerCity = {}
-// for 
+const sightingsPerCity = {}
+for (let sighting of mostRecentUfoData) {
+    let city = sighting.City
+    
+        sightingsPerCity[city] = (sightingsPerCity[city] || 0) + 1
+    }
+const maxSightings = Math.max(...Object.values(sightingsPerCity))
+const cityWithMostSightings = Object.keys(sightingsPerCity).filter(city => sightingsPerCity[city] === maxSightings)
+// return sightingsPerCity
+
+// 🔹🔹🔹🔹One line solution🔹🔹🔹🔹
+// ?
+
 
 // 🔹 4. Count Sightings Per Country and Sort by Most Sightings
 // Create an object where keys are country names and values are the number of sightings. Then return an array of countries sorted by the highest number of sightings.
+
+
 
 // 🔹 5. Find the Earliest and Latest Sightings
 // Write a function that finds and returns both the earliest and latest recorded sighting dates.

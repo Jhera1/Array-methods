@@ -233,24 +233,26 @@ const messages = [
     
     // 2. Identify the user (phone number) who sent the most messages
    const senderCount = {}
-    for (let {sender} of messages) {
-      senderCount[sender] = (senderCount[sender] || 0) + 1
-    }
-    const mostFrequentSender = Object.keys(senderCount).reduce((a, b) => senderCount[a] > senderCount[b] ? a : b)  
+   for (let {sender} of messages) {
+    senderCount[sender] = (senderCount[sender] || 0) + 1
+   }
     
+   const mostFrequentSender = Object.entries(senderCount).reduce((a, b) => a[1] > b[1] ? a : b)[0]
+  
+
     // 3. Group messages by date (ignoring time)
     const messagesByDate = {}
-    for (let {timestamp, text} of messages) {
-      const date = timestamp.slice(0, 10)
-      if (!messagesByDate[date]) {
-        messagesByDate[date] = []
-      }
+   for (let {text, timestamp} of messages) {
+    let date = timestamp.slice(0, 10)
+    if (!messagesByDate[date]) {
+      messagesByDate[date] = []
+    }
     messagesByDate[date].push(text)
-    } 
+   }
   
     // 4. Calculate the average message length (in characters)
-  const totalCharacters = messages.reduce((sum, { text }) => sum + text.length, 0);
-  const avgMessLength =  Math.round(totalCharacters / messagesLength)
+  const totalCharacters = messages.reduce((sum, {text}) => sum + text.length, 0)
+  const avgMessLength = Math.round(totalCharacters/messagesLength)
   
     // 5. Find the most active recipient 
     // Identify which phone number received the most messages.
@@ -259,25 +261,28 @@ const messages = [
     receiverCount[recipient] = (receiverCount[recipient] || 0) + 1
     
   }
-  const mostActiveRecipient = Object.values(receiverCount)
+  const mostActiveRecipient = Object.entries(receiverCount).reduce((a, b) => a[1] > b[1] ? a : b)
   
     // Extra: If it's a tie return an Array of all of the Most active numbers
 
   // 6. Find the longest message
   // Determine which message has the most characters and return its details.
-  const longestMessage = messages.reduce((sum, {text}) => sum + text)
+  const longestMessage = messages.reduce((longest, message) => message.text.length > longest.text.length ? message : longest)
 
 
-  return{
-        // messagesLength, 
-        // mostFrequentSender, 
+  return {
+          // messagesLength,  
         // messagesByDate, 
         // avgMessLength,
         // mostActiveRecipient,
         // avgMessLength,
-        totalCharacters,
-        mostActiveRecipient
+        // totalCharacters,
+        // mostActiveRecipient,
+        // senderCount,
+        // mostFrequentSender,
+        longestMessage
       }
+  
 
    }
   
