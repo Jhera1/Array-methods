@@ -280,14 +280,30 @@ const messages = [
         // mostActiveRecipient,
         // senderCount,
         // mostFrequentSender,
-        longestMessage
+        // longestMessage
       }
   
 
    }
   
-  console.log(messageAnalysis(messages));
+  // console.log(messageAnalysis(messages));
+
+  
+  const sectSort = (array, start, length = array.length - start) => {
+    // Extract the section to be sorted
+    const sortedSection = array.slice(start, start + length).sort((a, b) => a - b);
     
+    // Merge sorted section back into original array
+    return [...array.slice(0, start), ...sortedSection, ...array.slice(start + length)];
+  };
+  
+  // Example Usage:
+  console.log(sectSort([1, 2, 5, 7, 4, 6, 3, 9, 8], 2)); 
+  // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  
+  console.log(sectSort([9, 7, 4, 2, 5, 3, 1, 8, 6], 2, 5)); 
+  // Output: [9, 7, 1, 2, 3, 4, 5, 8, 6]
+  
 
 
 
