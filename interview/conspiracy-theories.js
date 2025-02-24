@@ -98,11 +98,16 @@ console.log(theoryWithLongestTitle)
 
 // 2️⃣ Find the conspiracy theory with the shortest title.
 const theoryWithShortestTitle = conspiracyTheories.reduce((a, b) => a.title.length < b.title.length ? a : b).title
-console.log(theoryWithShortestTitle)
-// 3️⃣ Sort conspiracy theories by title in alphabetical order.
+// console.log(theoryWithShortestTitle)
 
+// 3️⃣ Sort conspiracy theories by title in alphabetical order.
+const theoriesAToZ = conspiracyTheories.sort((a, b) => a.title.localeCompare(b.title))
+console.log(theoriesAToZ)
 
 // 4️⃣ Sort conspiracy theories by title in reverse alphabetical order.
+const theoriesZToA = conspiracyTheories.sort((a, b) => b.title.localeCompare(a.title))
+console.log(theoriesZToA)
+
 // 5️⃣ Find all conspiracy theories that originated in the 20th century (1901-2000).
 // 6️⃣ Find all conspiracy theories that originated in the 21st century (2001-present).
 // 7️⃣ Determine the percentage of conspiracy theories that belong to the "Government" category.
