@@ -11,6 +11,7 @@ const conspiracyTheories = [
     { title: "The Mandela Effect", category: "Psychology", mentions: 1600, firstAppearance: "2009" }
   ];
 
+ 
 
 
 
@@ -102,17 +103,47 @@ const theoryWithShortestTitle = conspiracyTheories.reduce((a, b) => a.title.leng
 
 // 3️⃣ Sort conspiracy theories by title in alphabetical order.
 const theoriesAToZ = conspiracyTheories.sort((a, b) => a.title.localeCompare(b.title))
-console.log(theoriesAToZ)
+// console.log(theoriesAToZ)
 
 // 4️⃣ Sort conspiracy theories by title in reverse alphabetical order.
 const theoriesZToA = conspiracyTheories.sort((a, b) => b.title.localeCompare(a.title))
-console.log(theoriesZToA)
+// console.log(theoriesZToA)
 
 // 5️⃣ Find all conspiracy theories that originated in the 20th century (1901-2000).
+
+const originatedInThe20thCentury = conspiracyTheories.filter(theory => Number(theory.firstAppearance.slice(0, 4)) >= 1901 && Number(theory.firstAppearance.slice(0, 4)) <= 2000)
+// console.log(originatedInThe20thCentury)
+
 // 6️⃣ Find all conspiracy theories that originated in the 21st century (2001-present).
+const originatedInThe21stCentury = conspiracyTheories
+      .filter(theory => Number(theory.firstAppearance.slice(0, 4)) >= 2001
+      && Number(theory.firstAppearance.slice(0, 3) <= 2025))
+// console.log(originatedInThe21stCentury)
+
 // 7️⃣ Determine the percentage of conspiracy theories that belong to the "Government" category.
+const govCount = conspiracyTheories.filter(theory => theory.category === 'Government').length
+// console.log(`${govCount/conspiracyTheories.length * 100}% of the theories belong to the Government category`)
+
 // 8️⃣ Find the average number of mentions for conspiracy theories that originated before 1950.
+const theoriesBef1950Avg = conspiracyTheories.filter(theory => 
+    Number(theory.firstAppearance.slice(0, 4)) <= 1949).length
+    // console.log((conspiracyTheories.length / theoriesBef1950Avg).toFixed(2))
+
 // 9️⃣ Find the conspiracy theory that has the highest mentions per year since its first appearance.
+const highestNumOfMentionsSinceDiscovery = conspiracyTheories => {
+    for (let {firstAppearance, mentions} of conspiracyTheories) {
+        const currYear = new Date().getFullYear()
+        const extractYear = firstAppearance.slice(0, 4)
+    }
+    return currYear
+}
+console.log(highestNumOfMentionsSinceDiscovery(conspiracyTheories))
+
+
+
+
+
+
 // 🔟 Find the conspiracy theory that has the lowest mentions per year since its first appearance.
 // 1️⃣1️⃣ Group conspiracy theories by century based on their first appearance.
 // 1️⃣2️⃣ Find the most common category among the conspiracy theories.
