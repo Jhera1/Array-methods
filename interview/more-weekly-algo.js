@@ -92,3 +92,20 @@ const almostPalindrome = (str, maxRemovals) => {
 console.log(almostPalindrome('raceciiar', 2)); // ✅ true
 console.log(almostPalindrome('abca', 1)); // ✅ true
 console.log(almostPalindrome('abcdef', 2)); // ❌ false
+
+
+
+
+
+
+
+// loop through candies arr
+// add extra candies to the item of arr
+// compare to other kids candies to see if curr kid now has the most candies
+
+let arr = [12, 4, 6, 9, 19]
+let exCandies = 4
+
+const kidsWithCandies = (candies, extraCandies) => {
+    let 
+}
