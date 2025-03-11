@@ -54,29 +54,127 @@
 // console.log(reverseVowels("IceCreAm"))
 
 
-const reverseVowels = s => {
- const vowels = new Set('aeiouAEIOU')
- let sArr = [...s]
- let l = 0, r = sArr.length - 1
- while (l < r) {
-    if (!vowels.has(sArr[l])) {
-    l++
-    continue
-    }
-    if (!vowels.has(sArr[r])) {
-    r--
-    continue
-    }
-    [sArr[l], sArr[r]] = [sArr[r], sArr[l]]
-    l++
-    r--
- }
- return sArr.join('')
-};
+// const reverseVowels = s => {
+//  const vowels = new Set('aeiouAEIOU')
+//  let sArr = [...s]
+//  let l = 0, r = sArr.length - 1
+//  while (l < r) {
+//     if (!vowels.has(sArr[l])) {
+//     l++
+//     continue
+//     }
+//     if (!vowels.has(sArr[r])) {
+//     r--
+//     continue
+//     }
+//     [sArr[l], sArr[r]] = [sArr[r], sArr[l]]
+//     l++
+//     r--
+//  }
+//  return sArr.join('')
+// };
 
-// Test cases
-console.log(reverseVowels("hello")); // "holle"
-console.log(reverseVowels("leetcode")); // "leotcede"
-console.log(reverseVowels("aA")); // "Aa"
-console.log(reverseVowels("racecar")); // "racecar"
-console.log(reverseVowels("")); // ""
+// // Test cases
+// console.log(reverseVowels("hello")); // "holle"
+// console.log(reverseVowels("leetcode")); // "leotcede"
+// console.log(reverseVowels("aA")); // "Aa"
+// console.log(reverseVowels("racecar")); // "racecar"
+// console.log(reverseVowels("")); // ""
+
+// const reverseWords = str => {
+//     let trimmedStr = str.split(/\s+/).reverse().join(' ').trim()
+//     return trimmedStr
+// }
+// console.log(reverseWords("the sky is blue"))
+// console.log(reverseWords("  hello world  "))
+// console.log(reverseWords("a good   example"))
+
+
+
+///////////productExceptSelf\\\\\\\\\\\\\\
+
+
+// var productExceptSelf = function(nums) {
+//     // const result = []
+//     // for (let i = 0; i < nums.length; i++) {
+//     // const cleanArr = nums.filter((_, index) => index !== i)
+//     // const reduceCleanArr = cleanArr.reduce((acc, curr) => acc * curr)
+//     // result.push(reduceCleanArr)
+//     // }
+//     // return result
+//     let result = Array(nums.length).fill(1), left = 1, right = 1;
+//   nums.forEach((num, i) => (result[i] *= left, left *= num));
+//   nums.reverse().forEach((num, i) => (result[nums.length - 1 - i] *= right, right *=  num));
+//   return result;
+// };
+
+// const productExceptSelf = arr => {
+//  return arr.map(num => {
+//      num = null
+//      num * num
+//  })
+   
+// }
+// console.log(productExceptSelf([1,2,3,4]))
+
+
+// const howManyDifferencesDoesItTake = (flowerbed, n) => {
+//     let plantedFlowers = 0
+//     for (let i = 0; i < flowerbed.length; i++) {
+//         if (flowerbed[i] === 0 && (i === 0 || flowerbed[i - 1] === 0) &&
+//         (i === flowerbed.length - 1 || flowerbed[i + 1] === 0)) {
+//             flowerbed[i] = 1
+//             plantedFlowers++
+//             i++
+//         }
+        
+//     }
+//     return plantedFlowers >= n
+// }
+// console.log(howManyDifferencesDoesItTake([1,0,0,0,1], 1))
+
+// Complete the method so that it returns an array of all 
+// ID's passed in. The data structure will be similar to the 
+// following:
+
+const data = {
+    id: 1,
+    items: [
+      {id: 2},
+      {id: 3, items: [
+        {id: 4},
+        {id: 5}
+      ]}
+    ]
+  }
+
+// const extractIds = d => {
+// let result = []
+// for (let items of d) {
+//     result.push(items.id)
+// }
+// return result
+// }
+
+// const extractIds = d => {
+//     let result = [];
+
+//     const traverse = obj => {
+//         // Add current object's id
+//         if (obj.id) {result.push(obj.id)}; 
+//         // Recursively process children
+//         if (obj.items) {
+//             obj.items.forEach(traverse)
+//         }; 
+//     };
+
+//     traverse(d);
+//     return result;
+// };
+
+
+const extractIds = d => {
+    
+}
+  
+console.log(extractIds(data)) // should return [1,2,3,4,5]
