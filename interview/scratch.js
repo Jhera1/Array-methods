@@ -137,16 +137,16 @@
 // ID's passed in. The data structure will be similar to the 
 // following:
 
-const data = {
-    id: 1,
-    items: [
-      {id: 2},
-      {id: 3, items: [
-        {id: 4},
-        {id: 5}
-      ]}
-    ]
-  }
+// const data = {
+//     id: 1,
+//     items: [
+//       {id: 2},
+//       {id: 3, items: [
+//         {id: 4},
+//         {id: 5}
+//       ]}
+//     ]
+//   }
 
 // const extractIds = d => {
 // let result = []
@@ -173,8 +173,31 @@ const data = {
 // };
 
 
-const extractIds = d => {
-    
+
+// console.log(extractIds(data)) // should return [1,2,3,4,5]
+
+
+
+// const sumExceptSelf = arrOfNumbers => {
+//     let resultArr = []
+
+//     for (let i = 0; i < arrOfNumbers.length; i++) {
+//         let tempArr = [...arrOfNumbers]
+//         tempArr.splice(i, 1)
+//         // console.log(tempArr)
+//         let sumWithoutIndex = arrOfNumbers.pop([i], [i + 1]) 
+//         resultArr.push(sumWithoutIndex)
+//     }
+//     return resultArr
+// }
+
+const sumExceptSelf = arr => { 
+    let resultArr = []
+    for (let i = 0; i < arr.length; i++) {
+        let newArr = arr.toSpliced(i, 1)
+        let newArrSum = newArr.reduce((a, b) => a * b)
+        resultArr.push(newArrSum)
+    }
+    return resultArr
 }
-  
-console.log(extractIds(data)) // should return [1,2,3,4,5]
+console.log(sumExceptSelf([1, 2, 3, 4, 5])) // Expected new arr [120, 60, 40, 30, 24]
