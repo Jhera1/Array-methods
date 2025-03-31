@@ -194,10 +194,22 @@
 const sumExceptSelf = arr => { 
     let resultArr = []
     for (let i = 0; i < arr.length; i++) {
-        let newArr = arr.toSpliced(i, 1)
-        let newArrSum = newArr.reduce((a, b) => a * b)
+        let newArr = arr.slice(0, i).concat(arr.slice(i + 1)); 
+        let newArrSum = newArr.reduce((a, b) => a * b) 
         resultArr.push(newArrSum)
     }
     return resultArr
 }
 console.log(sumExceptSelf([1, 2, 3, 4, 5])) // Expected new arr [120, 60, 40, 30, 24]
+
+
+
+
+// Write a function that finds the contiguous subarray with the largest sum and returns that sum.
+// Extension: Implement both the O(n) Kadane's algorithm and the divide-and-conquer approach.
+
+// Write a function that takes a string as input and returns the string with only the first letter of each word capitalized.
+// Extension : Modify the function to preserve the case of the remaining letters in each word.
+
+// Given a positive integer n, return it reversed without converting it to a string.
+// Bonus: modify this function to return a boolean expressing if the number is a palindrome.
