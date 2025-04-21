@@ -308,7 +308,26 @@
 // updateInventory(currentStock, newStock)  ==>
 // [[15, 'Apple'], [25, 'HTC'], [5, 'LG'], [1000, 'Nokia'], [54, 'Samsung'], [43, 'Son
 
-function updateInventory(curStock, newStock) {
-    // thank you for solving my kata :)
-      return [];
+
+const updateInventory = (curStock, newStock) => {
+    const inventoryMap = new Map();
+  console.log(inventoryMap)
+    // Add current to the map
+    curStock.forEach(([qty, name]) => inventoryMap.set(name, qty));
+  console.log(inventoryMap)
+  console.log(inventoryMap.get('Sony'))
+    // Update new stock or add to map if dosn't exist
+    newStock.forEach(([qty, name]) => {
+      inventoryMap.set(name, (inventoryMap.get(name) || 0) + qty);
+    });
+  console.log(inventoryMap)
+    // Convert back to array and sort by name
+    return Array.from(inventoryMap)
+      .map(([name, qty]) => [qty, name])
+      .sort((a, b) => a[1].localeCompare(b[1]));
   }
+  
+
+  console.log(updateInventory([[25, 'HTC'], [1000, 'Nokia'], [50, 'Samsung'], [33, 'Sony'], [10, 'Apple']], [[5, 'LG'], [10, 'Sony'], [4, 'Samsung'], [5, 'Apple']]))
+
+
