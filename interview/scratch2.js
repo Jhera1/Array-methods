@@ -62,20 +62,88 @@
 // ********************
 // ectract all id's into an array
 
-const data = {
-    id: 1,
-    items: [
-      {id: 2},
-      {id: 3, items: [
-        {id: 4},
-        {id: 5}
-      ]}
-    ]
-  }
+// const data = {
+//   id: 1,
+//   items: [
+//     { id: 2 },
+//     { id: 3, items: [
+//         { id: 4 },
+//         { id: 5 }
+//       ]}
+//   ]
+// };
 
-  const extractIds = data => {
-    let ids = [data.id]
-    return ids
-  }
-  
-  console.log(extractIds(data)) // should return [1,2,3,4,5]
+// const data = {
+//   id: 1,
+//   items: [
+//     { id: 2 },
+//     { 
+//       id: 3, 
+//       items: [
+//         { id: 4 },
+//         { 
+//           id: 5, 
+//           items: [
+//             { id: 6 },
+//             { 
+//               id: 7, 
+//               items: [
+//                 { id: 8 },
+//                 { 
+//                   id: 9, 
+//                   items: [
+//                     { id: 10 }
+//                   ]
+//                 }
+//               ]
+//             }
+//           ]
+//         }
+//       ]
+//     },
+//     { id: 11 }
+//   ]
+// };
+
+
+// const data = {
+//   id : 1,
+//   items : [{
+//   id : 2,
+//   items : [{
+//     id : 3,
+//     items : [
+//     {id : 4},
+//     {id : 5}
+//     ]
+//     },{
+//     id : 6,
+//     items : [{id : 7}]
+//     }]
+//   }]
+// }
+
+
+// const extractIds = data => {
+//   // get id value and make it an array
+//   let ids = [data.id];
+//   // check to see if data.items exists & if it is an array
+//   if (data.items && Array.isArray(data.items)) {
+//   // recursive function to extract ids from items
+//     for (const item of data.items) {
+//       ids = ids.concat(extractIds(item));
+//     }
+//   }
+//   if (ids === undefined) {
+//     return []
+//   }
+//   return ids;
+// };
+
+// console.log(extractIds(data)); 
+
+// ***************************
+
+// Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+const endsWith = (strA, strB) => 
