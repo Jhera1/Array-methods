@@ -1,3 +1,5 @@
+// ***********Fill in the gaps in my timesheet.(caodewars)
+
 // Background:
 // At work I need to keep a timesheet, by noting which project I was working on every 15 minutes. I have an timer that beeps every 15 minutes to prompt me to note down what I was working on at that point, but sometimes when I'm away from my desk or working continuously on one project, I don't note anything down and these get recorded as null.
 
@@ -18,4 +20,15 @@
 // Output:
 // An array with any consecutive null elements surrounded by equal values replaced by that value.
 
-console.log('Hello World')
+const fillInTimeSheet = timeLogArr => {
+    let result = [...timeLogArr]
+    for (let i = 1; i < result.length - 1; i++) {
+      if (result[i] === null && result[i - 1] === result[i + 1]) {
+        result[i] = result[i - 1]
+      }
+    }
+    return result
+}
+console.log(fillInTimeSheet([1,null,2,null,2,null,1]))
+console.log(fillInTimeSheet([1,null,1,2,null,2]))
+console.log(fillInTimeSheet([1,null,null,1,2,null,2])) // should be [1,1,1,1,2,2,2,]
