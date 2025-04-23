@@ -146,4 +146,14 @@
 
 // Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
 
-const endsWith = (strA, strB) => 
+const endsWith = (strA, strB) => {
+    for (i = 0; i < strB.length; i++) {
+      if (strA[strA.length - strB.length] !== strB[i]) {
+        return false
+      }
+      return true
+    }
+}
+console.log(endsWith('Swat', 'at'))
+console.log(endsWith('Swat', 'pt'))
+console.log(endsWith('Skjhgsdfwat', 'wat'))
