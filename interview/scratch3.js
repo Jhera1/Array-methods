@@ -20,15 +20,68 @@
 // Output:
 // An array with any consecutive null elements surrounded by equal values replaced by that value.
 
-const fillInTimeSheet = timeLogArr => {
-    let result = [...timeLogArr]
-    for (let i = 1; i < result.length - 1; i++) {
-      if (result[i] === null && result[i - 1] === result[i + 1]) {
-        result[i] = result[i - 1]
-      }
+// const fillInTimeSheet = timeLogArr => {
+    
+//   let result = [...timeLogArr]
+  
+//   for (let j = 0; j < result.length; j++) {
+//     if (result[j] === null) {
+//      let start = j
+//     }
+//   } 
+  
+    
+//   while (j < result.length && result[j] === null) {
+//     j++
+//   }
+  
+//   const before = result[start - 1]
+//   const after = result[j]
+  
+//   if (before !== undefined && before === after) {
+//     for (let i = start; i < j; i++) {
+//       result[i] = before 
+//     }
+//   }
+//   return result
+// }
+// console.log(fillInTimeSheet([1,null,2,null,2,null,1]))
+// console.log(fillInTimeSheet([1,null,1,2,null,2]))
+// console.log(fillInTimeSheet([1,null,null,1,2,null,2])) // should be [1,1,1,1,2,2,2,]
+
+
+
+
+////////////////////////////////
+
+
+// Description:
+// A latin square is an n × n array filled with the integers 1 to n, each occurring once in each row and column.
+
+// Here are examples of latin squares of size 4 and 7:
+
+// [[1, 4, 3, 2],      [[2, 3, 1, 7, 4, 6, 5], 
+//  [4, 3, 2, 1],       [7, 1, 6, 5, 2, 4, 3], 
+//  [3, 2, 1, 4],       [6, 7, 5, 4, 1, 3, 2], 
+//  [2, 1, 4, 3]]       [4, 5, 3, 2, 6, 1, 7], 
+//                      [5, 6, 4, 3, 7, 2, 1], 
+//                      [1, 2, 7, 6, 3, 5, 4], 
+//                      [3, 4, 2, 1, 5, 7, 6]]
+// Latin squares have many practical uses, for example in error-correcting-codes and the design of agricultural experiments. See https://en.wikipedia.org/wiki/Latin_square for more details. Sudoku is a special type of 9 x 9 latin square, with additional conditions.
+
+// Task: Write a function that returns a latin square for any positive integer n.
+
+function makeLatinSquare(n) {
+  const square = [];
+
+  for (let i = 0; i < n; i++) {
+    const row = [];
+    for (let j = 0; j < n; j++) {
+      row.push((i + j) % n + 1);
     }
-    return result
+    square.push(row);
+  }
+
+  return square.forEach(row => console.log(row));
 }
-console.log(fillInTimeSheet([1,null,2,null,2,null,1]))
-console.log(fillInTimeSheet([1,null,1,2,null,2]))
-console.log(fillInTimeSheet([1,null,null,1,2,null,2])) // should be [1,1,1,1,2,2,2,]
+console.log(makeLatinSquare(4))
