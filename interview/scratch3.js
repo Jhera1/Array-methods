@@ -71,17 +71,53 @@
 
 // Task: Write a function that returns a latin square for any positive integer n.
 
-function makeLatinSquare(n) {
-  const square = [];
+// function makeLatinSquare(n) {
+//   const square = [];
 
-  for (let i = 0; i < n; i++) {
-    const row = [];
-    for (let j = 0; j < n; j++) {
-      row.push((i + j) % n + 1);
-    }
-    square.push(row);
+//   for (let i = 0; i < n; i++) {
+//     const row = [];
+//     for (let j = 0; j < n; j++) {
+//       row.push((i + j) % n + 1);
+//     }
+//     square.push(row);
+//   }
+
+//   return square.forEach(row => console.log(row));
+// }
+// console.log(makeLatinSquare(4))
+
+
+
+///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+
+// Description:
+// You will be given an array of objects (associative arrays in PHP) representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+// Your task is to return:
+
+// true if at least one Ruby developer has signed up; or
+// false if there will be no Ruby developers.
+// For example, given the following input array:
+
+let list1 = [
+  { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'JavaScript' },
+  { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
+  { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'Ruby' }
+];
+// your function should return true.
+
+
+const hasARubyDeveloperSignedUp = arrOfObjects => {
+  for (let obj of arrOfObjects) {
+   
+      if (obj.language == 'Ruby') {
+        return true
+      } 
+   
   }
-
-  return square.forEach(row => console.log(row));
 }
-console.log(makeLatinSquare(4))
+
+console.log(hasARubyDeveloperSignedUp(list1))
