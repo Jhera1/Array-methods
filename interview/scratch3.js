@@ -102,22 +102,41 @@
 // false if there will be no Ruby developers.
 // For example, given the following input array:
 
-let list1 = [
-  { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'JavaScript' },
-  { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
-  { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'Ruby' }
-];
-// your function should return true.
+// let list1 = [
+//   { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'JavaScript' },
+//   { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
+//   { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'Ruby' }
+// ];
+// // your function should return true.
 
 
-const hasARubyDeveloperSignedUp = arrOfObjects => {
-  for (let obj of arrOfObjects) {
+// const hasARubyDeveloperSignedUp = arrOfObjects => {
+//   for (let obj of arrOfObjects) {
    
-      if (obj.language == 'Ruby') {
-        return true
-      } 
+//       if (obj.language == 'Ruby') {
+//         return true
+//       } 
    
-  }
+//   }
+// }
+
+// console.log(hasARubyDeveloperSignedUp(list1))
+
+
+
+// Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+
+// For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
+
+// The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
+
+// Based on: https://leetcode.com/problems/two-sum/
+
+// twoSum([1, 2, 3], 4) // returns [0, 2] or [2, 0]
+// twoSum([3, 2, 4], 6) // returns [1, 2] or [2, 1]
+
+
+
+function twoSum(numbers, target) {
+   
 }
-
-console.log(hasARubyDeveloperSignedUp(list1))
