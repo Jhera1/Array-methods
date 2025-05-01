@@ -137,23 +137,24 @@
 
 
 
-function twoSum(numbers, target) {
-   for (let i = 0; i < numbers.length; i++) {
-    // console.log(numbers[i])
+// function twoSum(numbers, target) {
+//    for (let i = 0; i < numbers.length; i++) {
+//     // console.log(numbers[i])
     
-    for (let j = 0; j < numbers.length; j++) {
-      if (i === j) {
-        i++
-      }
+//     for (let j = 0; j < numbers.length; j++) {
+//       if (i === j) {
+//         j++
+//       }
       
-      // console.log(j, i)
-      if ((numbers[j] + numbers[i]) === target) {
-        // console.log(j, i)
-        return [j, i]
-      }
-     } 
-  } 
-  return 'No Match'
-}
-console.log(twoSum([3, 2, 4], 6))
-console.log(twoSum([1, 2, 3], 4))
+//       // console.log(j, i)
+//       if ((numbers[j] + numbers[i]) === target) {
+//         // console.log(j, i)
+//         return [j, i]
+//       }
+//      } 
+//   } 
+//   return 'No Match'
+// }
+// console.log(twoSum([3, 2, 4], 6))
+// console.log(twoSum([1, 2, 3], 4))
+
