@@ -158,3 +158,12 @@
 // console.log(twoSum([3, 2, 4], 6))
 // console.log(twoSum([1, 2, 3], 4))
 
+
+/////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+const toAlternatingCase = str => {
+  const splitStr = [...str]
+  return splitStr.map(a => )
+}
+console.log(toAlternatingCase("HellO WorLD")) // => "hELLo wORld"
