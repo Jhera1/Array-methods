@@ -162,8 +162,21 @@
 /////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
-const toAlternatingCase = str => {
-  const splitStr = [...str]
-  return splitStr.map(a => )
-}
-console.log(toAlternatingCase("HellO WorLD")) // => "hELLo wORld"
+// const toAlternatingCase = str => {
+//   const splitStr = [...str]
+//   return splitStr.map(a => )
+// }
+// console.log(toAlternatingCase("HellO WorLD")) // => "hELLo wORld"
+
+
+////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+// You're given an array of objects representing products in an e-commerce system.
+
+// Your task is to create a function called analyzeInventory that takes this array of product objects and performs the following operations and returns a report object with the results:
+
+// Calculate the total value of the inventory (sum of price * stock for all products)
+// Find the product with the highest average rating
+// Group products by category
+// Identify products that are low in stock (less than 10 items)
+// Find the average price for each category
