@@ -137,27 +137,70 @@
 
 
 
-function twoSum(numbers, target) {
-   for (let i = 0; i < numbers.length; i++) {
-    // console.log(numbers[i])
+// function twoSum(numbers, target) {
+//    for (let i = 0; i < numbers.length; i++) {
+//     // console.log(numbers[i])
     
-    for (let j = 0; j < numbers.length; j++) {
-      if (i === j) {
-        continue
-      }
+//     for (let j = 0; j < numbers.length; j++) {
+//       if (i === j) {
+//         continue
+//       }
       
-      // console.log(j, i)
-      if ((numbers[j] + numbers[i]) === target) {
-        // console.log(j, i)
-        return [j, i]
-      }
-     } 
-  } 
-  return 'No Match'
-}
-console.log(twoSum([3, 2, 4], 6))
-console.log(twoSum([1, 2, 3], 4))
-// use continue & 2 pointer solution
+//       // console.log(j, i)
+      // if ((numbers[j] + numbers[i]) === target) {
+      //   // console.log(j, i)
+      //   return [j, i]
+      // }
+//      } 
+//   } 
+//   return 'No Match'
+// }
+// console.log(twoSum([3, 2, 4], 6))
+// console.log(twoSum([1, 2, 3], 4))
+
+// use continue & 2 pointer solution \\
+
+// function twoSum(numbers, target) {
+//   let i = 0;
+//   let j = numbers.length - 1;
+
+//   while (i < j) {
+//     const sum = numbers[i] + numbers[j];
+    
+//     if (sum === target) {
+//       return [i, j];
+//     } else if (sum < target) {
+//       i++; // move left pointer forward
+//     } else {
+//       j--; // move right pointer backward
+//     }
+//   }
+
+//   return 'No Match';
+// }
+
+// ✅ One-loop Solution (No nested loops)
+
+
+// function twoSum(numbers, target) {
+//   const seen = new Map(); // store number → index
+//   console.log(seen)
+//   for (let i = 0; i < numbers.length; i++) {
+//     const complement = target - numbers[i];
+
+//     if (seen.has(complement)) {
+//       return [seen.get(complement), i];
+//     }
+
+//     seen.set(numbers[i], i);
+//   }
+
+//   return 'No Match';
+// }
+
+// console.log(twoSum([3, 2, 4], 6))
+// console.log(twoSum([1, 2, 3], 4))
+
 
 /////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -171,66 +214,3 @@ console.log(twoSum([1, 2, 3], 4))
 
 ////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-// You're given an array of objects representing products in an e-commerce system.
-
-// Your task is to create a function called analyzeInventory that takes this array of product objects and performs the following operations and returns a report object with the results:
-
-// Calculate the total value of the inventory (sum of price * stock for all products)
-// Find the product with the highest average rating
-// Group products by category
-// Identify products that are low in stock (less than 10 items)
-// Find the average price for each category
-
-// const products = [
-//   { id: 1, name: "Laptop", category: "Electronics", price: 999.99, stock: 50, ratings: [4, 5, 3, 5, 4, 5, 3, 4, 5] },
-//   { id: 2, name: "Shirt", category: "Clothing", price: 24.99, stock: 100, ratings: [4, 4, 5] },
-//   { id: 3, name: "Coffee Maker", category: "Home Appliances", price: 89.99, stock: 30, ratings: [5, 4, 4, 5, 3, 4] },
-//   { id: 4, name: "Book", category: "Books", price: 14.99, stock: 200, ratings: [4, 4, 4, 5, 3, 5, 4] },
-//   { id: 5, name: "Smartphone", category: "Electronics", price: 599.99, stock: 75, ratings: [3, 4, 4, 5, 5, 4, 3, 5] },
-//   { id: 6, name: "Socks", category: "Clothing", price: 9.99, stock: 150, ratings: [5, 5, 4, 5, 4] },
-//   { id: 7, name: "Blender", category: "Home Appliances", price: 49.99, stock: 8, ratings: [4, 3, 4, 5, 3, 5, 4, 4] },
-//   { id: 8, name: "Headphones", category: "Electronics", price: 199.99, stock: 6, ratings: [5, 5, 5, 4, 5, 4] },
-//   { id: 9, name: "Running Shoes", category: "Footwear", price: 79.99, stock: 25, ratings: [4, 4, 3, 5, 4, 3, 5, 4, 5] },
-//   { id: 10, name: "Novel", category: "Books", price: 19.99, stock: 95, ratings: [3, 4, 4, 4, 5, 3] },
-//   { id: 11, name: "Smart Watch", category: "Electronics", price: 299.99, stock: 4, ratings: [4, 5, 5, 5, 4, 5, 4] },
-//   { id: 12, name: "Dress", category: "Clothing", price: 49.99, stock: 60, ratings: [4, 3, 5, 4, 5, 3, 4, 5] },
-//   { id: 13, name: "Microwave", category: "Home Appliances", price: 129.99, stock: 25, ratings: [4, 4, 3, 5, 4, 3] },
-//   { id: 14, name: "Sandals", category: "Footwear", price: 29.99, stock: 20, ratings: [4, 3, 4, 4, 5, 3, 4] },
-//   { id: 15, name: "Cookbook", category: "Books", price: 24.99, stock: 45, ratings: [5, 5, 4, 4, 5, 4, 5, 3] },
-//   { id: 16, name: "Plant", category: "Home & Garden", price: 19.99, stock: 35, ratings: [4, 5, 5, 4, 3, 5, 4, 4, 5] },
-//   { id: 17, name: "Garden Tools Set", category: "Home & Garden", price: 89.99, stock: 7, ratings: [4, 4, 5, 3] },
-//   { id: 18, name: "Desk Lamp", category: "Lighting", price: 39.99, stock: 25, ratings: [4, 5, 4, 4, 5, 3, 5] }
-// ];
-
-// const analyzeInventory = data => {
-//      // Step 1: Initialize the Report Structure
-//     const report = {
-//      // Calculate the total value of the inventory (sum of price * stock for all products)
-//      totalInventoryValue: 0,
-//      // Find the product with the highest average rating
-//      highestRatedProduct: null,
-//      // Group products by category
-//      productsByCategory: {},
-//      // Identify products that are low in stock (less than 10 items)
-//      lowStockProducts: [],
-//      // Find the average price for each category
-//      averagePriceByCategory:{}
-//     }
-
-//     let highestAverageRating = 0;
-
-//     const catagoryTotals = {}
-//     const catagoryCounts = {}
-
-//     for (const product of products) {
-//     // Calculate the total value of the inventory (sum of price * stock for all products)
-//     // totalInventoryValue += 
-//     }
-
-
-
-    
-    // return report.totalInventoryValue
-
-// }
-// console.log(analyzeInventory(products))
