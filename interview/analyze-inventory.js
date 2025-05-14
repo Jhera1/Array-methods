@@ -29,7 +29,7 @@ const products = [
     { id: 18, name: "Desk Lamp", category: "Lighting", price: 39.99, stock: 25, ratings: [4, 5, 4, 4, 5, 3, 5] }
   ];
   
-  const analyzeInventory = data => {
+  const analyzeInventory = data => { 
        // Step 1: Initialize the Report Structure
       const report = {
        // Calculate the total value of the inventory (sum of price * stock for all products)
