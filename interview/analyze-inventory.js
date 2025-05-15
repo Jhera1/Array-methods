@@ -44,26 +44,52 @@ const products = [
        averagePriceByCategory:{}
       }
   
-      let highestAverageRatitg = 0;
+      let highestAverageRating = 0;
   
       const catagoryTotals = {}
       const catagoryCounts = {}
   
-      for (const product of products) {
-      // Calculate the total value of the inventory (sum of price * stock for all products)
-      report.totalInventoryValue += (product.price * product.stock)
-      
-      // Find the product with the highest average rating
+      for (const product of data) {    
+// Calculate the total value of the inventory (sum of price * stock for all products)
+      report.totalInventoryValue += product.price * product.stock
+
+// Find the product with the highest average rating
   
       let avg = product.ratings.reduce((a, b) => a + b) / product.ratings.length
-        console.log(avg.toFixed(2))
-        
-      }
-  
-      totalInventoryValue = report.totalInventoryValue.toFixed(2)
-  
-       
-      
-      return totalInventoryValue
+    //   console.log(avg)
+
+      if (avg > highestAverageRating) {
+        highestAverageRating = avg
+        report.highestRatedProduct = product
+        }
+
+// Group products by category
+    const catagory = product.category
+     if (!report.productsByCategory[catagory]) {
+        report.productsByCategory[catagory] = []
+     } 
+     report.productsByCategory[catagory].push(product.name)
+    // console.log(catagory)
+
+// Identify products that are low in stock (less than 10 items)
+
+     if (product.stock < 10) {
+        report.lowStockProducts.push(product.name)
+        }
+     
+// Find the average price for each category
+
+//  Prepare data for average price by category
+    //  if ()
+    
+
+    }
+    report.totalInventoryValue = report.totalInventoryValue.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+        style: 'currency',
+        currency: 'USD'
+    })
+    return report
   }
   console.log(analyzeInventory(products))
