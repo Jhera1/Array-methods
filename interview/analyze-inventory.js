@@ -80,16 +80,32 @@ const products = [
 // Find the average price for each category
 
 //  Prepare data for average price by category
-    //  if ()
-    
+     if (!catagoryTotals[product.catagory]) {
+        catagoryTotals[product.catagory] = 0
+        catagoryCounts[product.catagory] = 0 
+    }
+    catagoryTotals[product.catagory] += product.price
+    catagoryCounts[product.catagory] += 1
 
     }
+
+// Finalize total inventory value (rounded to 2 decimals w/ dollar sign and commas)
     report.totalInventoryValue = report.totalInventoryValue.toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
         style: 'currency',
         currency: 'USD'
     })
+
+// Finalize average price by category
+    for (const catagory in catagoryTotals) {
+        report.averagePriceByCategory = +(
+            catagoryTotals[catagory] / catagoryCounts[catagory]
+        ).toFixed(2)
+    }    
+
+
+console.log(catagoryCounts, catagoryTotals)
     return report
   }
   console.log(analyzeInventory(products))
