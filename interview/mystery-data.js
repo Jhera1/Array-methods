@@ -1,7 +1,5 @@
-🕸️ MysteryStore Data Set: (Full of hidden internet secrets)
-js
-Copy
-Edit
+// 🕸️ MysteryStore Data Set: (Full of hidden internet secrets)
+
 const mysteryItems = [
   { id: 201, name: "VPN Cloak", department: "Cybersecurity", price: 199.99, stock: 5, ratings: [5, 5, 4, 5, 5] },
   { id: 202, name: "Incognito Shades", department: "Privacy Gear", price: 49.99, stock: 2, ratings: [4, 4, 5, 5, 4] },
@@ -29,3 +27,21 @@ const mysteryItems = [
 // 🔴 Low in Stock = stock < 5
 
 // 📊 Average Price by Department 
+
+const analyzeMysteryData = data => {
+
+    const analysis = {
+        totalInventoryValue: 0,
+        topRatedProduct: 'null',
+        productByDepartment: {},
+        lowStockItems: [],
+        averagePricePerDept: {}
+    }
+
+    let totalWithoutCommas = data.reduce((sum, item) => sum + (item.price * item.price), 0)
+    console.log(totalWithoutCommas)
+    analysis.totalInventoryValue = totalWithoutCommas.toLocaleString()
+    return analysis.totalInventoryValue
+}
+
+console.log(analyzeMysteryData(mysteryItems))
