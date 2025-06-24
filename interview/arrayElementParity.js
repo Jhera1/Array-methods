@@ -16,3 +16,19 @@
 
 // Good luck!
 
+// const arrElementParity = numArr => {
+//     for (let num of numArr) {
+
+//     }
+// }
+
+function findUnique(arr) {
+    const set = new Set(arr);
+    console.log(set)
+    for (let num of set) {
+      if (!set.has(-num)) return num;
+    }
+  }
+console.log(findUnique([1, -1, 2, -2, 3])); // 3
+console.log(findUnique([-3, 1, 2, 3, -1, -4, -4, -2])); // -4
+console.log(findUnique([1, -1, 2, -2, 3, 3])); // 3
