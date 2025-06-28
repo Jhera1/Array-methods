@@ -18,9 +18,10 @@
 const pairSocks = sockArray => [
     ...new Set(
       sockArray.filter((sockColor, _, allSocks) =>
-        allSocks.filter(currentSock => currentSock === sockColor).length > 1
-      )
-    )
+        allSocks.filter(currentSock => currentSock === sockColor).length
+      ) 
+    )  
   ];
 
-console.log(pairSocks('Punkys Socks', ['red','blue','blue','green'])) // => ['red', 'blue']
+console.log('Punkys Socks', pairSocks(['red','blue','blue','green'])) // => ['red', 'blue']
+console.log('Henrys Socks', pairSocks(['red','blue','blue','green'])) // => ['blue', 'blue']
