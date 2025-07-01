@@ -15,13 +15,19 @@
 //     return punkiesSocks
 // }
 
-const pairSocks = sockArray => [
-    ...new Set(
-      sockArray.filter((sockColor, _, allSocks) =>
-        allSocks.filter(currentSock => currentSock === sockColor).length
-      ) 
-    )  
-  ];
+const getSocks = (name, socks) => {
+  if (name.length < 2) return []
+  if (name === 'punky') {
+    [color1, color2] = [...new Set(socks)]
+    return color2 ? [color1, color2] : []
+  }
 
-console.log('Punkys Socks', pairSocks(['red','blue','blue','green'])) // => ['red', 'blue']
-console.log('Henrys Socks', pairSocks(['red','blue','blue','green'])) // => ['blue', 'blue']
+  if (name === 'henry') {
+    const pairOfASocks = socks.find(a => a === socks ? pairOfASocks : [])
+    // return 
+  }  
+    
+}
+
+console.log('Punkys Socks', getSocks('punky', ['red','blue','blue','green'])) // => ['red', 'blue']
+console.log('Henrys Socks', getSocks('henry', ['red','blue','blue','green'])) // => ['blue', 'blue']
