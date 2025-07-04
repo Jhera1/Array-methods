@@ -92,18 +92,18 @@
 
 // FundamentalsStrings
 
-const correctTranslation = str => 
-  str.split('').map(a => 
-    a === '5' ? 'S' :
-    a === '0' ? 'O' :
-    a === '1' ? 'I' :
-    a).join('')
+// const correctTranslation = str => 
+//   str.split('').map(a => 
+//     a === '5' ? 'S' :
+//     a === '0' ? 'O' :
+//     a === '1' ? 'I' :
+//     a).join('')
   
 
 
 
-    console.log(correctTranslation("L0ND0N")); // ,"LONDON"
-    console.log(correctTranslation("DUBL1N")); // "DUBLIN"
-    console.log(correctTranslation("51NGAP0RE")); // "SINGAPORE"
-    console.log(correctTranslation("BUDAPE5T")); // "BUDAPEST"
-    console.log(correctTranslation("PAR15")); // "PARIS"
+//     console.log(correctTranslation("L0ND0N")); // ,"LONDON"
+//     console.log(correctTranslation("DUBL1N")); // "DUBLIN"
+//     console.log(correctTranslation("51NGAP0RE")); // "SINGAPORE"
+//     console.log(correctTranslation("BUDAPE5T")); // "BUDAPEST"
+//     console.log(correctTranslation("PAR15")); // "PARIS"
