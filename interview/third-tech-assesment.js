@@ -1,4 +1,4 @@
-// /**
+// /**  #1
 //  * * Squared Array Matching
 //  *
 //  * * Given two arrays a and b write a function that checks whether the two arrays have the "same" elements,
@@ -93,7 +93,7 @@
 //  console.log(compareArrrays(a5, b5))
 //  console.log(compareArrrays(a6, b6))
 
-
+// #2
 // 🔁 Practice Problem: Cube Comparison
 // Problem Statement:
 
@@ -126,7 +126,7 @@
 // console.log(compareCubes(null, [1, 8, 27]));                   // false
 // console.log(compareCubes([], []));                             // true
 
-
+// #3
 // 🔁 Practice Problem: Anagram Cubes
 // 🧠 Problem Statement:
 // Write a function compareAnagramCubes(arr1, arr2) that returns true if:
@@ -166,12 +166,11 @@ const cubeStrRepresentingNum = str => {
 // console.log('cubeStrRepresentingNum', cubeStrRepresentingNum('123'))
 
 const compareAnagramCubes = (arr1, arr2) => {
-   if (!arr1 || !arr2 || arr1.length !== arr2.length) return false
+   if (!Array.isArray(arr1) || !Array.isArray(arr2) || arr1.length !== arr2.length) return false
   
    const isNumeric = str => Number.isFinite(Number(str))
    const normalize = str => str.split('').sort().join('')
    
-   console.log(normalize)
    const frequencyMap = {}
 
    for (let NumStr of arr1) {
@@ -182,15 +181,15 @@ const compareAnagramCubes = (arr1, arr2) => {
       frequencyMap[normalized] = (frequencyMap[normalized] || 0) + 1
    }
 
-   for (let candiate of arr2) {
-      const normalized = normalize(candiate)
+   for (let candidate of arr2) {
+      const normalized = normalize(candidate)
       if (!frequencyMap[normalized]) return false
       frequencyMap[normalized]--
    }
        return true
 } 
 console.log(compareAnagramCubes(["2", "3"], ["8", "27"]));                 // true
-console.log(compareAnagramCubes(["2", "3", "4"], ["8", "27", "46"]));      // false
+console.log(compareAnagramCubes(["2", "3", "4"], ["8", "27", "46"]));      // true
 console.log(compareAnagramCubes(["2", "3", "2"], ["8", "27", "8"]));       // true
 console.log(compareAnagramCubes(["5"], ["521"]));                         // true
 console.log(compareAnagramCubes(["5", "3"], ["125", "72"]));               // true
