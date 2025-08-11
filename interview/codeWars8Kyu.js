@@ -107,3 +107,35 @@
 //     console.log(correctTranslation("51NGAP0RE")); // "SINGAPORE"
 //     console.log(correctTranslation("BUDAPE5T")); // "BUDAPEST"
 //     console.log(correctTranslation("PAR15")); // "PARIS"
+
+
+///////////////////////////////////////////
+
+// Description:
+// Write a function that combines two arrays by alternatingly taking elements from each array in turn.
+
+// Examples:
+
+// [a, b, c, d, e], [1, 2, 3, 4, 5] becomes  [a, 1, b, 2, c, 3, d, 4, e, 5]
+
+// [1, 2, 3], [a, b, c, d, e, f] becomes [1, a, 2, b, 3, c, d, e, f]
+
+const mergeArrays = (arr1, arr2) => {
+    let result = []
+    let maxArrLength = Math.max(arr1.length, arr2.length)
+    
+    
+
+    for (i = 0; i < maxArrLength; i++) {
+     
+      if (arr1[i] === undefined) arr1[i]++
+      if (arr2[i] === undefined) arr2[i]++
+      result.push(arr1[i])
+      result.push(arr2[i])
+    }
+    return result
+}
+    
+
+console.log(mergeArrays([1, 3, 5], [2, 2, 4, 6]))
+console.log(mergeArrays(['a', 'b', 'c', 'd', 'e'], [1, 2, 3, 4, 5])) // => [a, 1, b, 2, c, 3, d, 4, e, 5]

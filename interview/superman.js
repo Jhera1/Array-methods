@@ -162,7 +162,8 @@ const kryptonianArchives = [
 
 
   
-// #4  Group all events by role, such that each key is a role (e.g., "Scientist", "Superman") and its value is an array of actions with year and location.
+// #4  Group all events by role, such that each key is a role (e.g., "Scientist", "Superman") and
+// its value is an array of actions with year and location.
   
 // const groupActionYearLocation = data => {
 //    let roleMap = {}
@@ -188,20 +189,111 @@ const kryptonianArchives = [
 //     }
 //     return events.sort((a, b) => a.year - b-year)
 // }
-
+// console.log(entityTimeline(kryptonianArchives))
   
 //   #6 Given the name of an entity (e.g., "Kal-El"), return a sorted timeline of all their actions across all roles and years.
   
+// const sortedTimelineOfActionsAndYears = (data, name) => {
+//  const timeline = data
+//  .filter(e => e.entity === name)
+//  .sort((a, b) => a.year - b.year)
+//  .map(e => `In ${e.year}: ${e.entity} ${e.action}`)
+//  .join('\n')
+//   return `Timeline for ${name}: \n ${timeline}`
+// }
+// console.log(sortedTimelineOfActionsAndYears(kryptonianArchives, "Kal-El"))
+// console.log(sortedTimelineOfActionsAndYears(kryptonianArchives, "Jor-El"))
 
+//   #7 Event Count by Location
 
-//   Event Count by Location
+// const countByLocation = data => {
+//   let locationMap = {}
+//   for (let event of data) {
+//     if (!locationMap[event.location]) {
+//       locationMap[event.location] = 0
+//     }
+//     locationMap[event.location]++
+//   }
+//   return locationMap
+// }
+// console.log(countByLocation(kryptonianArchives))
   
-//   Count how many events took place at each location. Return an object with locations as keys and the number of events as values.
+//   #8 Count how many events took place at each location. 
+// Return an object with locations as keys and the number of events as values.
+
+// const countByLocation = data => {
+//   let locationMap = {}
+//   for (let event of data) {
+//     if (!locationMap[event.location]) {
+//       locationMap[event.location] = 0
+//     }
+//     locationMap[event.location]++
+//   }
+//   return locationMap
+// }
+// console.log(countByLocation(kryptonianArchives))
+
+//   #9 Most Active Entity
+
+// const mostActiveEntity = data => {
+//   let entityMap = {}
+//   for (let entry of data) {
+//     if (!entityMap[entry.entity]) {
+//       entityMap[entry.entity] = 0
+//     }
+//     entityMap[entry.entity]++
+    
+//   }
+//   let maxEntity = null
+//   let maxCount = 0
+//   for (let entity in entityMap) {
+//     if (entityMap[entity] > maxCount) {
+//       maxCount = entityMap[entity]
+//       maxEntity = entity
+//     }
+//   }
+//   return `The entity with the most activity is ${maxEntity} with ${maxCount} events`
+// }
+// console.log(mostActiveEntity(kryptonianArchives))
   
-//   Most Active Entity
+//   #10 Determine which entity appears in the most records and return their name along with how many entries they appear in.
+ 
+// const mostActiveEntity = data => {
+//   let entityMap = {}
+//   for (let entry of data) {
+//     if (!entityMap[entry.entity]) {
+//       entityMap[entry.entity] = 0
+//     }
+//     entityMap[entry.entity]++
+    
+//   }
+//   let maxEntity = null, maxCount = 0
+//   for (let entity in entityMap) {
+//     if (entityMap[entity] > maxCount) {
+//       maxCount = entityMap[entity]
+//       maxEntity = entity
+//     }
+//   }
+//   return `The entity with the most activity is ${maxEntity} with ${maxCount} events`
+// }
+// console.log(mostActiveEntity(kryptonianArchives))
+    
+
+//   #11 Sort Roles Chronologically by First Appearance
+
+const rollsCronologicalyByFirstApperance = data => {
+  let roleArr = []
+  for (let {role, year} of data) {
+    roleArr.push([role, year])
+  }
+  console.log(roleArr)
+  return roleArr.sort((a, b) => a[1] - b[1])
+}
+console.log(rollsCronologicalyByFirstApperance(kryptonianArchives))
   
-//   Determine which entity appears in the most records and return their name along with how many entries they appear in.
-  
-//   Sort Roles Chronologically by First Appearance
-  
-//   Build an array of all unique roles, sorted by the first year that role appears in the data.  
+// const uniqueRoles = data => data
+// .map(({role, year}) => [role, year])
+// .sort((a, b) => a[1] - b[1])
+// console.log(uniqueRoles(kryptonianArchives))
+
+//   #12 Build an array of all unique roles, sorted by the first year that role appears in the data.  
