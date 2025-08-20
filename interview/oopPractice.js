@@ -1,127 +1,115 @@
-// 🧪 1. Create a Shape Hierarchy
-// 🔧 Task:
-// Create a base class called Shape with a getArea() method. Then extend it into two classes: Rectangle and Circle.
+// const kryptonianArchives = 
+//     {
+//       id: 1,
+//       entity: "Jor-El",
+//       role: "Scientist",
+//       action: "Predicted Krypton's destruction",
+//       location: "Kryptonopolis",
+//       year: -5
+//     }
+//     console.log(kryptonianArchives)
+//     kryptonianArchives.year = kryptonianArchives.year += 1
+//     console.log(kryptonianArchives)
+//     kryptonianArchives.relationshipToSuperman = 'Father'
+//     console.log(kryptonianArchives)
 
-class shape {
-    constructor (name) {
-        this.name = name
-    }
+// const retrieveProperty = (obj, strKey) => obj[strKey] ? obj[strKey] : 'This information does not exist'
+// console.log(retrieveProperty(kryptonianArchives, "year"))
 
-    getArea() {
-        return 0
-    }
+const papaJohns = {
+    name: "Papa John's",
+    slogan: "Better Ingredients. Better Pizza. Papa John's.",
+    cuisines: ["italian", "american", "pizza"],
+    pizzaToppings: {
+      pepperoni: 2,
+      peppers: 0.6,
+      extraCheese: 1.5,
+      olives: 0.5,
+      bacon: 3,
+      extraSauce: 1,
+    },
+    numberOfStars: 3.5,
+    favorited: false,
+    address: "555 Main Street",
+    zipcode: 11234,
+    acceptsReservations: false,
+  };
+
+  const grabCategories = obj => Object.keys(obj)
+//   console.log(grabCategories(papaJohns))
+
+  const verifyValues = (obj, targetNum) => Object.values(obj).length >= targetNum
+//   console.log(verifyValues(papaJohns, 8))
+
+  const getToppingsInfo = obj => Object.entries(obj.pizzaToppings)
+//   console.log(getToppingsInfo(papaJohns))
+
+papaJohns.printAd = function (topping) {
+    return `Welcome to Papa John's! We are located at ${papaJohns.address}. This week, we are having a sale on ${topping} for $${papaJohns.pizzaToppings[topping]}. ${papaJohns.slogan}`
 }
+// console.log(papaJohns.printAd('bacon'))
 
-    class Rectangle extends shape {
-        constructor(name, width, height) {
-          super(name)   
-          this.width = width
-          this.height = height
-        }
+papaJohns.slogan = 'Only slightly addictive'
+// console.log(papaJohns.printAd('bacon'))
 
-        getArea() {
-            return this.width * this.height
-        }
+const dominos = {
+    name: "Domino's",
+    cuisines: ["italian", "new york", "pizza"],
+    pizzaToppings: {
+      pepperoni: 2.2,
+      mushrooms: 0.7,
+      extraCheese: 1.4,
+      onions: 0.5,
+      sausage: 2.8,
+      extraSauce: 0.8,
+    },
+    starReviews: {
+      Peach: 3,
+      Yoshi: 2.1,
+      Bowser: 4,
+      Mario: 5,
+      Luigi: 5,
+      Gumba564: 3.4,
+      "Donkey Kong": 3.2,
+    },
+    favorited: true,
+    address: "123 Elm Street",
+    zipcode: 54321,
+    acceptsReservations: true,
+  };
+
+  const printPizzaPlace = obj => {
+    for (let key in obj) {
+     console.log(key, obj[key])   
     }
-        class Circle extends shape {
-            constructor(name, radius) {
-                super(name)
-                this.radius = radius
-            }
+  }
+// printPizzaPlace(dominos)
 
-        getArea() {
-            return Math.PI * this.radius ** 2
-        }
+const toppingsPriceRange = obj => {
+    const {pizzaToppings: toppings} = obj
+    let max = -Infinity
+    let min = Infinity
+    for (let key in toppings) {
+      if (toppings[key] > max) {
+        max = toppings[key]
+      } else if (toppings[key] < min) {
+        min = toppings[key]
+      }
+      
     }
-    const myRectangle = new Rectangle("MyRect", 4, 5);
-    console.log(myRectangle.name); // "MyRect"
-    console.log(myRectangle.getArea()); // 20
+    return [min, max]
+}
+// console.log(toppingsPriceRange(dominos))
+// console.log(toppingsPriceRange(papaJohns))
+
+const calculateAverageRating = pizzaPlace => {
+    const {starReviews} = pizzaPlace
+    const numOfReviews = Object.keys(starReviews).length
+    let totalStars = 0
+    for (let key in starReviews) {
+        totalStars += starReviews[key]
+    }
+    console.log(Number((totalStars / numOfReviews).toFixed(2)))
     
-    const myCircle = new Circle("MyCircle", 3);
-    console.log(myCircle.name); // "MyCircle"
-    console.log(myCircle.getArea()); // ~28.274333882308138
-
-
-
-// 🔨 Requirements:
-// Shape has a name property.
-
-// Rectangle takes width and height.
-
-// Circle takes radius.
-
-// Each subclass overrides getArea() and returns the correct area.
-
-// 💡 Example:
-// javascript
-// Copy code
-// const r = new Rectangle('MyRect', 4, 5);
-// console.log(r.getArea()); // 20
-
-// const c = new Circle('MyCircle', 3);
-// console.log(c.getArea()); // ~28.27
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 🧪 2. Bank Account System
-// 🔧 Task:
-// Create a BankAccount class, and then extend it into CheckingAccount and SavingsAccount.
-
-// 🔨 Requirements:
-// All accounts have owner, balance, and deposit()/withdraw() methods.
-
-// CheckingAccount allows overdrafts up to $100.
-
-// SavingsAccount doesn’t allow overdrafts at all.
-
-// 💡 Example:
-// javascript
-// Copy code
-// const checking = new CheckingAccount('Alice', 200);
-// checking.withdraw(250); // Allowed (down to -50)
-
-// const savings = new SavingsAccount('Bob', 200);
-// savings.withdraw(250); // Not allowed
-// 
-// 
-// 
-// 
-// 🧪 3. Zoo Animal Sound System
-// 🔧 Task:
-// Create an Animal class with a speak() method, then extend it into Dog, Lion, and Cow.
-
-// 🔨 Requirements:
-// Each subclass should return a different sound using speak()
-
-// Dog → "barks"
-
-// Lion → "roars"
-
-// Cow → "moos"
-
-// 💡 Example:
-// javascript
-// Copy code
-// const dog = new Dog("Rex");
-// console.log(dog.speak()); // "Rex barks."
-// 
-// 
-// 
-// 
-// 
-// 🧪 4. Person and Student
-// 🔧 Task:
-// Create a Person class with name and age, and a greet() method. Then create a Student class that extends Person.
-
-// 🔨 Requirements:
-// Student adds a major property.
-
-// Override greet() to say:
-
-// "Hi, I'm Alice, 20 years old and majoring in Math."
+}
+calculateAverageRating(dominos)

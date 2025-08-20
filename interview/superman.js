@@ -291,9 +291,12 @@ const rollsCronologicalyByFirstApperance = data => {
 }
 console.log(rollsCronologicalyByFirstApperance(kryptonianArchives))
   
+
+
+//   #12 Build an array of all unique roles, sorted by the first year that role appears in the data.  
+
+
 // const uniqueRoles = data => data
 // .map(({role, year}) => [role, year])
 // .sort((a, b) => a[1] - b[1])
 // console.log(uniqueRoles(kryptonianArchives))
-
-//   #12 Build an array of all unique roles, sorted by the first year that role appears in the data.  
