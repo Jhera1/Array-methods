@@ -12,7 +12,7 @@ const vowelsConsonantsCount = str => {
     }
     return counts
 }
-console.log(vowelsConsonantsCount('Somewhere in time'))
+// console.log(vowelsConsonantsCount('Somewhere in time'))
 
 
 
@@ -33,7 +33,7 @@ const charThatAppearsOnlyOnce = arr => {
     }
     return `There is no number in ${arr} that appears only once`
 }
-console.log(charThatAppearsOnlyOnce([9, 9, 4, 4, 5, 6, 5, 6]))
+// console.log(charThatAppearsOnlyOnce([9, 9, 4, 4, 5, 6, 5, 6]))
 
 // 3.Given a string s, return true if the string can 
 // be a palindrome after deleting at most one character 
@@ -89,9 +89,9 @@ const almostPalindrome = (str, maxRemovals) => {
     return isPalindrome(str.toLowerCase(), 0, str.length - 1, maxRemovals)
 }
 
-console.log(almostPalindrome('raceciiar', 2)); // ✅ true
-console.log(almostPalindrome('abca', 1)); // ✅ true
-console.log(almostPalindrome('abcdef', 2)); // ❌ false
+// console.log(almostPalindrome('raceciiar', 2)); // ✅ true
+// console.log(almostPalindrome('abca', 1)); // ✅ true
+// console.log(almostPalindrome('abcdef', 2)); // ❌ false
 
 
 
@@ -103,9 +103,52 @@ console.log(almostPalindrome('abcdef', 2)); // ❌ false
 // add extra candies to the item of arr
 // compare to other kids candies to see if curr kid now has the most candies
 
-let arr = [12, 4, 6, 9, 19]
-let exCandies = 4
+// let arr = [12, 4, 6, 9, 19]
+// let exCandies = 4
 
-const kidsWithCandies = (candies, extraCandies) => {
-    let 
-}
+// const kidsWithCandies = (candies, extraCandies) => {
+//     let 
+// }
+
+
+
+///////////////////////////////////////
+
+
+
+// There is an array of strings. All strings contains 
+// similar letters except one. Try to find it!
+
+const findUniqueChar = strArr => {
+    const reducedStrArr = strArr.map(
+      s => [...new Set(s.toLowerCase())].sort().join("") // normalize
+    );
+     
+    console.log(reducedStrArr)
+    
+    for (let i = 0; i < reducedStrArr.length - 1; i++) {
+      if (reducedStrArr[i] === reducedStrArr[i + 1]) {
+        continue; // same set, keep going
+      } else {
+        // one of these two is the odd one
+        // decide which is unique by also checking the neighbor before/after
+        if (i === 0) {
+          // at the start, compare with the 2nd and 3rd
+          return reducedStrArr[1] === reducedStrArr[2]
+            ? strArr[0]
+            : strArr[1];
+        } else {
+          // in the middle, compare with previous
+          return reducedStrArr[i] === reducedStrArr[i - 1]
+            ? strArr[i + 1]
+            : strArr[i];
+        }
+      }
+    }
+    return null;
+  };
+  findUniqueChar([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ])
+  findUniqueChar(["abc", "cab", "bca", "abcd"])
+
+// console.log(findUniqueChar([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]))// => 'BbBb'
+// console.log(findUniqueChar(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']))// => 'foo'
