@@ -147,8 +147,65 @@ const findUniqueChar = strArr => {
     }
     return null;
   };
-  findUniqueChar([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ])
-  findUniqueChar(["abc", "cab", "bca", "abcd"])
+//   findUniqueChar([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ])
+//   findUniqueChar(["abc", "cab", "bca", "abcd"])
 
 // console.log(findUniqueChar([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]))// => 'BbBb'
 // console.log(findUniqueChar(['abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba']))// => 'foo'
+
+
+function missingWord(nums, str) {
+    let cleanStr = str.toLowerCase().replace(/ /g, '')
+    let corectOrderOfindex = nums.slice().sort((a, b) => a - b)
+    let result = ''
+    for (let i = 0; i < corectOrderOfindex.length; i++) {
+     result += cleanStr[corectOrderOfindex[i]]
+    }
+     return result
+   }
+//    console.log(missingWord([0,3,5],'I love you'))
+
+function sayHello( name, city, state ) {
+    
+    
+    return `Hello, ${name.join(' ')}! Welcome to ${city}, ${state}!`
+ 
+}
+// console.log(sayHello(["Justin","Lee", "Armstrong"], "Monterey", "California"))
+
+// !!!!!!!!!!!!!!!!!!!!INTERVIEW QUESTION!!!!!!!!!
+let cleanStr = arr => arr.map(item => item.replace(/\|\|/g, '').trim());
+// console.log(cleanStr(["Justin || Lee || Armstrong || Monterey || California"]).toString()) 
+//****************************************************/
+
+// You will be given a list of strings. You must sort 
+// it alphabetically (case-sensitive, and based on the 
+// ASCII values of the chars) and then return the first
+//  value.
+
+// The returned value must be a string, and have "***" 
+// between each of its letters.
+
+// You should not remove or add elements from/to the
+// array.
+
+const bitSort = arr => {
+return arr.sort((a, b) => b.length - a.length)[0].split('').join('***')
+}
+// console.log(bitSort(["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]))// = 'b***i***t***c***o***i***n' 
+
+
+
+function findOddNames(list) {
+    let oddNames = []
+      for (let person of list) {
+      let nameValue = person.firstName.split('').reduce((a, b) => a + b.charCodeAt(0), 0)
+      if (nameValue % 2 !== 0) {
+        oddNames.push(person)
+      } 
+    }
+    return oddNames
+    }
+    console.log(findOddNames( [
+        { firstName: 'Aba', lastName: 'N.', country: 'Ghana', continent: 'Africa', age: 21, language: 'Python' },
+        { firstName: 'Abb', lastName: 'O.', country: 'Israel', continent: 'Asia', age: 39, language: 'Java' }]))
