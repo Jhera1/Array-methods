@@ -91,11 +91,51 @@ const products = [
 // and performs the following operations and returns a report object with the results:
 
 
+const analyzeInventory = data => {
 
 // 1. Calculate the total value of the inventory (sum of price * stock for all products)
+
+// return data.map(a => a.price * a.stock).reduce((a, b) => a + b)
+
 // 2. Find the product with the highest average rating
+let result = null
+let highestAvg = 0
+for (let product of products) {
+    let avg = product.ratings.reduce((a, b) => a + b) / product.ratings.length
+    if (avg > highestAvg) {
+        highestAvg = avg
+        result = product.name
+    }
+}
+// return result
+
 // 3. Group products by category
+let categoryMap = {}
+for (let product of products) {
+    if (!categoryMap[product.category]) {
+        categoryMap[product.category] = []
+    }
+    categoryMap[product.category].push(product)
+}
+// return categoryMap
+
 // 4. Identify products that are low in stock (less than 10 items)
+let lowStock = []
+for (let product of products) {
+    if (product.stock < 10) {
+        lowStock.push(product.name)
+    }
+}
+// return lowStock
+
 // 5. Find the average price for each category
-
-
+let avgPriceMap = {}
+for (let [category, products] of Object.entries(categoryMap)) {
+    let avg = products.map(a => a.price).reduce((a, b) => a + b) / products.map(a => a.price).length
+   
+    avgPriceMap[category] = avg
+}
+console.log(categoryMap)
+// return avgPriceMap
+}
+console.log(analyzeInventory(products))
