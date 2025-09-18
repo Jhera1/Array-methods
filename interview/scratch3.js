@@ -214,3 +214,12 @@
 
 ////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+function biggest(nums) {
+let result = nums
+.map(String)
+.sort((a, b) => (b + a) - (a + b))
+.join('')
+return result[0] === '0' ? '0' : result
+}
+   console.log(biggest([1, 2, 3] ))//--> "321" 
+   console.log(biggest([3, 30, 34, 5, 9]))// --> "9534330"

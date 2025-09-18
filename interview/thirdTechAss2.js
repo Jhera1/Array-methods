@@ -135,7 +135,7 @@ for (let [category, products] of Object.entries(categoryMap)) {
    
     avgPriceMap[category] = avg
 }
-console.log(categoryMap)
+
 // return avgPriceMap
 }
 console.log(analyzeInventory(products))
